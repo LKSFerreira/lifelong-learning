@@ -1,0 +1,38 @@
+[
+    {
+        "Id": 1,
+        "Nome": "Lucas Ferreira",
+        "Pontuacao": 50,
+        "QuantidadePartidas": 5,
+        "Vitorias": 5,
+        "Derrotas": 0,
+        "Empates": 0
+    },
+    {
+        "Id": 2,
+        "Nome": "Isabelly Sofia",
+        "Pontuacao": 100,
+        "QuantidadePartidas": 10,
+        "Vitorias": 10,
+        "Derrotas": 0,
+        "Empates": 0
+    },
+    {
+        "Id": 3,
+        "Nome": "Vanderleia Gomes",
+        "Pontuacao": 80,
+        "QuantidadePartidas": 8,
+        "Vitorias": 8,
+        "Derrotas": 0,
+        "Empates": 0
+    },
+    {
+        "Id": 4,
+        "Nome": "Tony Stark",
+        "Pontuacao": 0,
+        "QuantidadePartidas": 0,
+        "Vitorias": 0,
+        "Derrotas": 0,
+        "Empates": 0
+    }
+]

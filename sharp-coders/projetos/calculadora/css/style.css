@@ -1,0 +1,42 @@
+.calculator {
+    margin: 0 auto;
+    width: 240px;
+}
+
+#result {
+    height: 40px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.keys button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.keys button.operator {
+    background-color: #f0ad4e;
+    color: #fff;
+}
+
+.keys button:active {
+    background-color: #ccc;
+}
+
+#clear {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+#equal {
+    background-color: #5cb85c;
+    color: #fff;
+}

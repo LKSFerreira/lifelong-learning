@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades | 08</title>
+    <link rel="stylesheet" href="../css/atividade08/style.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <!--Hey! This is the original version of Simple CSS Waves-->
+        <div class="header">
+
+            <!--Content before waves-->
+            <div class="inner-header flex">
+                <div>
+                    <h1>Atividade Front-End</h1>
+                    <p>Clique nos botões abaixo para alterar a caixa do texto</p>
+                </div>
+            </div>
+            <div class="frame">
+                <button class="custom-btn btn-11" data-botoes>Caixa Alta</button>
+                <button class="custom-btn btn-15" data-botoes>Caixa Baixa</button>
+            </div>
+            <div class="logo">
+                <p data-logo-texto>"O dia em que a última árvore for cortada, o último rio for poluído e o último peixe for pescado, o ser humano perceberá que dinheiro não se come. "Provérbio indígena"</p>
+            </div>
+            <div>
+                <button class="custom-btn btn-12" data-botoes><span>Atividade</span><span>Voltar</span></button>
+                <button class="custom-btn btn-12" data-botoes><span>Atividade</span><span>Próxima</span></button>
+            </div>
+        </div>
+
+
+
+        <!--Waves Container-->
+        <div>
+            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!--Waves end-->
+
+        </div>
+        <!--Header ends-->
+
+        <!--Content starts-->
+        <div class="content flex" id="creditos">
+            <!-- Utilizei o site code.io como base do projeto -->
+            <p>By.Goodkatz | Free to use </p>
+            <p style="font-family: Andale Mono, monospace;">
+                DEERBUCKS.DESIGNING</p>
+        </div>
+        <!--Content ends-->
+    </main>
+    <footer></footer>
+    <script src="../js/atividade08.js"></script>
+</body>
+
+</html>
