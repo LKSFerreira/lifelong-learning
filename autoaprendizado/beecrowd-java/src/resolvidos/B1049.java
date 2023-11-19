@@ -1,3 +1,4 @@
+package resolvidos;
 import java.util.Scanner;
 
 public class B1049 {

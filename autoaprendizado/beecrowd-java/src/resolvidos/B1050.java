@@ -1,3 +1,4 @@
+package resolvidos;
 import java.util.HashMap;
 import java.util.Scanner;
 
