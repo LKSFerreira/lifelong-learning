@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ferreira.restapiswagger.api.v1.dto.ProdutoDto;
-import ferreira.restapiswagger.services.FakeApiService;
+import ferreira.restapiswagger.business.services.FakeApiService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

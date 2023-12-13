@@ -1,4 +1,4 @@
-package ferreira.restapiswagger.infra;
+package ferreira.restapiswagger.infra.client;
 
 import java.util.List;
 

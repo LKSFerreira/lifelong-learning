@@ -1,7 +1,5 @@
 package ferreira.restapiswagger.api.v1.dto;
 
-import java.math.BigDecimal;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -18,11 +16,14 @@ public class ProdutoDto {
   @JsonProperty(value = "id")
   private Long id;
 
+  @JsonProperty(value = "entity_id")
+  private String entityId;
+
   @JsonProperty(value = "title")
   private String nome;
 
   @JsonProperty(value = "price")
-  private BigDecimal preco;
+  private String preco;
 
   @JsonProperty(value = "category")
   private String categoria;
