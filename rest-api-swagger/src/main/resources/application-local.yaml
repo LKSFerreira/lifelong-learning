@@ -1,0 +1,10 @@
+fakeApi:
+  url: https://fakestoreapi.com
+
+spring:
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+server:
+  port: 8080
