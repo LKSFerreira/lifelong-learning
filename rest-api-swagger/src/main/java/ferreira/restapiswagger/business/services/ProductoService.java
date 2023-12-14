@@ -26,6 +26,14 @@ public class ProductoService {
     }
   }
 
+  public ProdutoDto saveProdutoDto(ProdutoDto produtoDto) {
+    try {
+      return produtoMapper.toDto(productoRepository.save(produtoMapper.toEntity(produtoDto)));
+    } catch (Exception e) {
+      throw new RuntimeException("Erro ao savar produto:" + e.getMessage());
+    }
+  }
+
   public List<ProdutoEntity> getAll() {
     try {
       return productoRepository.findAll();

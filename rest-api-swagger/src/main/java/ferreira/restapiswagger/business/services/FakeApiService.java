@@ -19,11 +19,8 @@ public class FakeApiService {
   public List<ProdutoDto> getAll() {
 
     try {
-
       List<ProdutoDto> produtoDto = fakeApiClient.getAll();
-
       produtoDto.forEach(produto -> {
-        
         if (!produtoService.existsByName(produto.getNome())) {
           produtoService.save(produtoMapper.toEntity(produto));
         }
@@ -31,6 +28,7 @@ public class FakeApiService {
 
       return produtoMapper.toListDto(produtoService.getAll());
     } catch (Exception e) {
+
       throw new RuntimeException("Erro ao buscar produtos: " + e.getMessage());
     }
   }
