@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class FakeApiService {
   private final IFakeApiClient fakeApiClient;
   private final ProdutoMapper produtoMapper;
-  private final ProductoService produtoService;
+  private final ProdutoService produtoService;
 
   public List<ProdutoDto> getAll() {
 
