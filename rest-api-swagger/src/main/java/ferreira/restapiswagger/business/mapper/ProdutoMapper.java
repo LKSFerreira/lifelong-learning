@@ -23,6 +23,19 @@ public class ProdutoMapper {
         .build();
   }
 
+  public ProdutoEntity toEntityUpdate(ProdutoEntity produtoEntity, String id, ProdutoDto produtoDto) {
+    return ProdutoEntity.builder()
+        .id(id)
+        .nome(produtoDto.getNome() != null ? produtoDto.getNome() : produtoEntity.getNome())
+        .preco(produtoDto.getPreco() != null ? produtoDto.getPreco() : produtoEntity.getPreco())
+        .categoria(produtoDto.getCategoria() != null ? produtoDto.getCategoria() : produtoEntity.getCategoria())
+        .descricao(produtoDto.getDescricao() != null ? produtoDto.getDescricao() : produtoEntity.getDescricao())
+        .imagem(produtoDto.getImagem() != null ? produtoDto.getImagem() : produtoEntity.getImagem())
+        .dataInclusao(produtoEntity.getDataInclusao())
+        .dataAlteracao(LocalDateTime.now())
+        .build();
+  }
+
   public ProdutoDto toDto(ProdutoEntity produtoEntity) {
     return ProdutoDto.builder()
         .entityId(produtoEntity.getId())
