@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ferreira.restapiswagger.api.v1.dto.ProdutoDto;
@@ -29,11 +30,6 @@ public class FakeApiController {
   @Operation(summary = "Busca todos os produtos na API Fake Store e salva no banco de dados", method = "POST")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Busca Realizada com sucesso"),
-      // @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-      // @ApiResponse(responseCode = "401", description = "Não autorizado"),
-      // @ApiResponse(responseCode = "404", description = "Nenhum produto encontrado"),
-      // @ApiResponse(responseCode = "403", description = "Acesso negado"),
-      // @ApiResponse(responseCode = "422", description = "Dados de requisição inválidos"),
       @ApiResponse(responseCode = "500", description = "Erro interno do servidor") })
   @PostMapping("/fakestore-api")
   public ResponseEntity<List<ProdutoDto>> saveAll() {
@@ -43,15 +39,19 @@ public class FakeApiController {
   @Operation(summary = "Busca todos os produtos no banco de dados", method = "GET")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Busca Realizada com sucesso"),
-      // @ApiResponse(responseCode = "400", description = "Requisição inválida"),
-      // @ApiResponse(responseCode = "401", description = "Não autorizado"),
-      // @ApiResponse(responseCode = "404", description = "Nenhum produto encontrado"),
-      // @ApiResponse(responseCode = "403", description = "Acesso negado"),
-      // @ApiResponse(responseCode = "422", description = "Dados de requisição inválidos"),
       @ApiResponse(responseCode = "500", description = "Erro interno do servidor") })
   @GetMapping()
   public ResponseEntity<List<ProdutoDto>> getAll() {
     return ResponseEntity.ok().body(produtoService.getAll());
+  }
+
+  @Operation(summary = "Busca um produto pelo nome", method = "GET")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Busca Realizada com sucesso"),
+      @ApiResponse(responseCode = "500", description = "Erro interno do servidor") })
+  @GetMapping("/{nome}")
+  public ResponseEntity<ProdutoDto> getByNome(@RequestParam String nome) {
+    return ResponseEntity.ok().body(produtoService.getByNome(nome));
   }
 
 }
