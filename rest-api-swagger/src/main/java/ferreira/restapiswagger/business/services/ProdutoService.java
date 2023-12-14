@@ -70,6 +70,7 @@ public class ProdutoService {
     try {
       ProdutoEntity produtoEntity = productoRepository.findById(id)
           .orElseThrow(() -> new RuntimeException("O Id informado não existe no banco de dados"));
+          
       return produtoMapper.toDto(productoRepository.save(produtoMapper.toEntityUpdate(produtoEntity, id, produtoDto)));
     } catch (Exception e) {
       throw new RuntimeException("Erro ao atualizar produto: " + e.getMessage());

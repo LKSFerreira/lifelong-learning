@@ -38,7 +38,7 @@ public class ProdutoMapper {
 
   public ProdutoDto toDto(ProdutoEntity produtoEntity) {
     return ProdutoDto.builder()
-        .entityId(produtoEntity.getId())
+        .id(produtoEntity.getId())
         .nome(produtoEntity.getNome())
         .categoria(produtoEntity.getCategoria())
         .descricao(produtoEntity.getDescricao())

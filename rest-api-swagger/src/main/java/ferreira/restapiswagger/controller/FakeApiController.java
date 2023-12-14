@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,5 +66,14 @@ public class FakeApiController {
   public ResponseEntity<Void> deleteByNome(@RequestParam String nome) {
     produtoService.deleteByNome(nome);
     return ResponseEntity.accepted().build();
+  }
+
+  @Operation(summary = "Atualiiza um produto pelo nome", method = "PUT")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Produto atualizado com sucesso"),
+      @ApiResponse(responseCode = "500", description = "Erro atualizar do servidor") })
+  @PutMapping("/{id}")
+  public ResponseEntity<ProdutoDto> update(@PathVariable String id, @RequestBody ProdutoDto produtoDto) {
+    return ResponseEntity.ok().body(produtoService.update(id, produtoDto));
   }
 }

@@ -13,22 +13,22 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProdutoDto {
 
-  @JsonProperty(value = "entity_id")
-  private String entityId;
+  @JsonProperty(value = "id")
+  private String id;
 
-  @JsonProperty(value = "title")
+  @JsonProperty(value = "nome")
   private String nome;
 
-  @JsonProperty(value = "price")
+  @JsonProperty(value = "preco")
   private String preco;
 
-  @JsonProperty(value = "category")
+  @JsonProperty(value = "categoria")
   private String categoria;
 
-  @JsonProperty(value = "description")
+  @JsonProperty(value = "descricao")
   private String descricao;
 
-  @JsonProperty(value = "image")
+  @JsonProperty(value = "iamgem")
   private String imagem;
 
 }
