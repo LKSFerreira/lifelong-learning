@@ -3,6 +3,7 @@ package ferreira.restapiswagger.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,7 @@ public class FakeApiController {
   @Operation(summary = "Busca todos os produtos na API Fake Store e salva no banco de dados", method = "POST")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Busca Realizada com sucesso"),
-      @ApiResponse(responseCode = "500", description = "Erro interno do servidor") })
+      @ApiResponse(responseCode = "500", description = "Erro ao buscar e salvar no servidor") })
   @PostMapping("/fakestore-api")
   public ResponseEntity<List<ProdutoDto>> saveAll() {
     return ResponseEntity.ok().body(fakeApiService.getAll());
@@ -39,7 +40,7 @@ public class FakeApiController {
   @Operation(summary = "Busca todos os produtos no banco de dados", method = "GET")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Busca Realizada com sucesso"),
-      @ApiResponse(responseCode = "500", description = "Erro interno do servidor") })
+      @ApiResponse(responseCode = "500", description = "Erro ao buscar do servidor") })
   @GetMapping()
   public ResponseEntity<List<ProdutoDto>> getAll() {
     return ResponseEntity.ok().body(produtoService.getAll());
@@ -48,10 +49,19 @@ public class FakeApiController {
   @Operation(summary = "Busca um produto pelo nome", method = "GET")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Busca Realizada com sucesso"),
-      @ApiResponse(responseCode = "500", description = "Erro interno do servidor") })
+      @ApiResponse(responseCode = "500", description = "Erro buscar do servidor") })
   @GetMapping("/{nome}")
   public ResponseEntity<ProdutoDto> getByNome(@RequestParam String nome) {
     return ResponseEntity.ok().body(produtoService.getByNome(nome));
   }
 
+  @Operation(summary = "Remove um produto pelo nome", method = "DELETE")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Produto removido com sucesso"),
+      @ApiResponse(responseCode = "500", description = "Erro excluir do servidor") })
+  @DeleteMapping("/{nome}")
+  public ResponseEntity<Void> deleteByNome(@RequestParam String nome) {
+    produtoService.deleteByNome(nome);
+    return ResponseEntity.accepted().build();
+  }
 }
