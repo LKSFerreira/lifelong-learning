@@ -13,9 +13,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProdutoDto {
 
-  @JsonProperty(value = "id")
-  private Long id;
-
   @JsonProperty(value = "entity_id")
   private String entityId;
 

@@ -17,7 +17,6 @@ public class FakeApiService {
   private final ProdutoService produtoService;
 
   public List<ProdutoDto> getAll() {
-
     try {
       List<ProdutoDto> produtoDto = fakeApiClient.getAll();
       produtoDto.forEach(produto -> {
@@ -26,7 +25,7 @@ public class FakeApiService {
         }
       });
 
-      return produtoMapper.toListDto(produtoService.getAll());
+      return produtoService.getAll();
     } catch (Exception e) {
 
       throw new RuntimeException("Erro ao buscar produtos: " + e.getMessage());

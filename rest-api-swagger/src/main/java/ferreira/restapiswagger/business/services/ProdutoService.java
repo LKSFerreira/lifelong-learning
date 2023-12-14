@@ -18,9 +18,9 @@ public class ProdutoService {
 
   private final ProdutoMapper produtoMapper;
 
-  public ProdutoEntity save(ProdutoEntity produtoEntity) {
+  public ProdutoDto save(ProdutoEntity produtoEntity) {
     try {
-      return productoRepository.save(produtoEntity);
+      return produtoMapper.toDto(productoRepository.save(produtoEntity));
     } catch (Exception e) {
       throw new RuntimeException("Erro ao salvar produto: " + e.getMessage());
     }
@@ -34,17 +34,17 @@ public class ProdutoService {
     }
   }
 
-  public List<ProdutoEntity> getAll() {
+  public List<ProdutoDto> getAll() {
     try {
-      return productoRepository.findAll();
+      return produtoMapper.toListDto(productoRepository.findAll());
     } catch (Exception e) {
       throw new RuntimeException("Erro ao buscar produtos: " + e.getMessage());
     }
   }
 
-  public ProdutoEntity getByNome(String nome) {
+  public ProdutoDto getByNome(String nome) {
     try {
-      return productoRepository.findByNome(nome);
+      return produtoMapper.toDto(productoRepository.findByNome(nome));
     } catch (Exception e) {
       throw new RuntimeException("Erro ao buscar produto: " + e.getMessage());
     }
