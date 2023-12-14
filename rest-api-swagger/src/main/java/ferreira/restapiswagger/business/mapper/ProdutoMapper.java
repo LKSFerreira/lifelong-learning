@@ -3,7 +3,6 @@ package ferreira.restapiswagger.business.mapper;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
@@ -36,6 +35,6 @@ public class ProdutoMapper {
   }
 
   public List<ProdutoDto> toListDto(List<ProdutoEntity> produtoEntity) {
-    return produtoEntity.stream().map(this::toDto).collect(Collectors.toList());
+    return produtoEntity.stream().map(this::toDto).toList();
   }
 }

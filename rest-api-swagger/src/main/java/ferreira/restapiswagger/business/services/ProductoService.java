@@ -23,11 +23,18 @@ public class ProductoService {
   }
 
   public List<ProdutoEntity> getAll() {
-
     try {
       return productoRepository.findAll();
     } catch (Exception e) {
       throw new RuntimeException("Erro ao buscar produtos: " + e.getMessage());
+    }
+  }
+
+  public Boolean existsByName(String name) {
+    try {
+      return productoRepository.existsByNome(name);
+    } catch (Exception e) {
+      throw new RuntimeException("Erro ao buscar produto: " + e.getMessage());
     }
   }
 

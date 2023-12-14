@@ -1,3 +1,6 @@
+server:
+  port: 8080
+
 fakeApi:
   url: https://fakestoreapi.com
 
@@ -7,17 +10,17 @@ spring:
       ribbon:
         enabled: false
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:54331/postgres
     username: postgres
     password: postgres
   jpa:
+    database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+    generate-ddl: true
     properties:
       hibernate:
         ddl-auto: update
         "[format_sql]": true
         packages-to-scan: ferreira.infra.entities
-
-server:
-  port: 8080

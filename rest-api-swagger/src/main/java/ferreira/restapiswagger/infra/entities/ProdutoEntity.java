@@ -5,18 +5,16 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "ProdutoEntity")
-@Table(name = "produto")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity(name = "produtos")
 public class ProdutoEntity {
 
   @Id
@@ -26,7 +24,7 @@ public class ProdutoEntity {
   @Column(name = "nome")
   private String nome;
 
-  @Column(name = "descricao")
+  @Column(name = "descricao", columnDefinition = "TEXT")
   private String descricao;
 
   @Column(name = "preco")

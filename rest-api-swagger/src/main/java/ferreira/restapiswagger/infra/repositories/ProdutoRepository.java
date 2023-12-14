@@ -6,4 +6,6 @@ import ferreira.restapiswagger.infra.entities.ProdutoEntity;
 
 public interface ProdutoRepository extends JpaRepository<ProdutoEntity, String> {
 
+  Boolean existsByNome(String nome);
+
 }

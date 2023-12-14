@@ -17,9 +17,21 @@ public class FakeApiService {
   private final ProductoService produtoService;
 
   public List<ProdutoDto> getAll() {
-    List<ProdutoDto> produtoDto = fakeApiClient.getAll();
-    produtoDto.forEach(
-        produto -> produtoService.save(produtoMapper.toEntity(produto)));
-    return produtoDto;
+
+    try {
+
+      List<ProdutoDto> produtoDto = fakeApiClient.getAll();
+
+      produtoDto.forEach(produto -> {
+        
+        if (!produtoService.existsByName(produto.getNome())) {
+          produtoService.save(produtoMapper.toEntity(produto));
+        }
+      });
+
+      return produtoMapper.toListDto(produtoService.getAll());
+    } catch (Exception e) {
+      throw new RuntimeException("Erro ao buscar produtos: " + e.getMessage());
+    }
   }
 }
