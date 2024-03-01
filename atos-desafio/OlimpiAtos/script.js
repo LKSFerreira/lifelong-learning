@@ -1,24 +1,32 @@
-export async function buscarCorredores() {
-  const response = await fetch(
-    "http://127.0.0.1:5500/pages/api/v1/runner.json"
-  );
-  const data = await response.json();
-  criarCorredores(data);
+import { getData } from "./pages/service/service.js";
+import { calcularConsumoDeAgua } from "./pages/scripts/algoritmo_consumo.js";
+
+const URI_BASE = "./pages/api/v1";
+const ENDPOINT = URI_BASE + "/runners.json";
+const ENDPOINT_TRACK = URI_BASE + "/race-track-paris.json";
+
+const circuito = await getData(ENDPOINT_TRACK).then((data) => {
   return data;
-}
+});
+
+getData(ENDPOINT).then((data) => {
+  criarCorredores(data);
+});
 
 async function criarCorredores(corredores) {
   const container = document.querySelector(".interior");
   container.innerHTML = "";
 
-  corredores.forEach((corredor, index) => {
+  corredores.forEach(async (corredor, index) => {
     const a = document.createElement("a");
     a.id = `corredor${index + 1}`;
     a.className = "btn";
     a.href = `#open-modal${index + 1}`;
     a.textContent = `🏃 ${corredor.nome}`;
 
-    // Criamos um modal para cada corredor
+    const totalGarrafas = await calcularConsumoDeAgua(corredor, circuito);
+
+    // Cria um modal para cada corredor
     const modal = document.createElement("div");
     modal.id = `open-modal${index + 1}`;
     modal.className = "modal-window";
@@ -29,11 +37,11 @@ async function criarCorredores(corredores) {
             <div>${corredor.descrição}</div>
             <br />
             <div><small>Consumo de água 👇🚰</small></div>
-            X garrafas
+            ${totalGarrafas} garrafas
         </div>
       `;
 
-    // Adicionamos o modal ao corpo do documento
+    // Adiciona o modal ao corpo do documento
     document.body.appendChild(modal);
 
     a.addEventListener("mouseover", function () {
@@ -45,5 +53,3 @@ async function criarCorredores(corredores) {
     container.appendChild(a);
   });
 }
-
-buscarCorredores();
