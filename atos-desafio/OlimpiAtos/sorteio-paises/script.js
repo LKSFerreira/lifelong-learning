@@ -1,7 +1,6 @@
 // script.js
 import { getSelecaoPaises } from "./script/selecaoPaises.js";
 import { getData } from "./service/service.js";
-import { testPaises } from "./script/test.js";
 
 // Defina o endpoint correto para os dados dos países
 const ENDPOINT_PAISES = "./api/v1/paises.json";
