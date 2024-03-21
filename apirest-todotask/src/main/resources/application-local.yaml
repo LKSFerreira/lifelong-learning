@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: API Rest TODO Task
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        ddl-auto: update
+        "[format_sql]": true
+        packages-to-scan: ferreira.apiresttodotask.task
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+springdoc:
+  swagger-ui:
+    path: /swagger
+    disable-swagger-default-url: false
+  pathsToMatch: /**
