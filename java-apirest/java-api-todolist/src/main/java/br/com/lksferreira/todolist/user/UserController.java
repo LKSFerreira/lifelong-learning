@@ -26,6 +26,7 @@ public class UserController {
         return "sucess";
     }
 
+    @SuppressWarnings("null")
     @PostMapping("/")
     public ResponseEntity<?> create(@RequestBody UserModel user) {
 
