@@ -24,10 +24,8 @@ import { getSelecaoPaises } from "./selecaoPaises.js";
 // Devido ao js trabalhar com referências, é necessário clonar o array para não alterar o original
 const paisesParticipantes = [...getSelecaoPaises()];
 
-console.log(paisesParticipantes.length);
-
 // calcula a ordem de apresentação dos países nos 4 ciclos de apresentações
-function calcularApresentacoes(paisesParticipantes) {
+async function getShowGroups(paisesParticipantes) {
   const ciclos = [[], [], [], []];
   let cicloAtual = 0;
 
@@ -43,7 +41,6 @@ function calcularApresentacoes(paisesParticipantes) {
     // Se a lista tiver menos de 20 países, não será mais feita a remoção e eles se apresentam em ordem reversa
     if (paisesParticipantes.length <= 20) {
       const paisesRestantes = paisesParticipantes.reverse();
-      console.log(paisesRestantes);
       ciclos[cicloAtual].push(...paisesParticipantes.reverse());
     }
 
@@ -55,10 +52,11 @@ function calcularApresentacoes(paisesParticipantes) {
 }
 
 // Chamamos a função e armazenamos o resultado
-let ordemDeApresentacao = calcularApresentacoes(paisesParticipantes);
+ export const ordemDeApresentacao = getShowGroups(paisesParticipantes);
+  
 
 // Exibimos a ordem de apresentação dos países nos 4 ciclos
-console.log("Ordem de apresentação dos países nos 4 ciclos:");
-ordemDeApresentacao.forEach((ciclo, index) => {
-  console.log(`Ciclo ${index + 1}:`, ciclo);
-});
+// console.log("Ordem de apresentação dos países nos 4 ciclos:");
+// ordemDeApresentacao.forEach((ciclo, index) => {
+//   console.log(`Ciclo ${index + 1}:`, ciclo);
+// });

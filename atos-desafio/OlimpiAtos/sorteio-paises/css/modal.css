@@ -10,6 +10,7 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s;
+
 }
 .modal-window:target {
   visibility: visible;
@@ -58,4 +59,26 @@
 
 .modal-window div:not(:last-of-type) {
   margin-bottom: 15px;
+}
+
+.bandeira {
+  width: 100px; /* ou o tamanho que você desejar */
+  height: 50px; /* ou o tamanho que você desejar */
+  position: absolute;
+  animation: deslizar 1s linear forwards; /* ajuste a duração conforme necessário */
+}
+
+@keyframes deslizar {
+  from {
+    right: 0px; /* começa fora do modal */
+  }
+  to {
+    right: 1320px; /* termina na posição final dentro do modal */
+  }
+}
+
+.grupo-bandeiras {
+  position: relative;
+  height: 50px; /* ou o tamanho que você desejar */
+  white-space: nowrap;
 }

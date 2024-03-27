@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400");
-
-#button {
+.ancor-button {
   border: calc(0.08 * var(--m)) solid transparent;
   position: relative;
   color: #f3f3f3;
@@ -33,7 +32,7 @@
 
 }
 
-#button::before {
+.ancor-button::before {
   content: "";
   background: linear-gradient(
     90deg,
@@ -55,8 +54,8 @@
   filter: blur(calc(0.8 * var(--m)));
 }
 
-#button:hover,
-#button:hover::before {
+.ancor-button:hover,
+.ancor-button:hover::before {
   animation: animate 0.5s infinite linear;
 }
 
@@ -73,4 +72,11 @@
   :root {
     --m: 2rem;
   }
+}
+
+.container-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
