@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OlimpiAtos</title>
-    <link rel="stylesheet" href="css/carrossel.css">
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/carrossel.css">
     <script src="script/carrossel.js" type="module" defer></script>
     <script src="script.js" type="module" defer></script>
     <script src="script/sorteioPaises.js" type="module" defer></script>
@@ -14,12 +15,22 @@
 
 <body>
     <div>
-        <button id="button">SORTEAR</button>
+        <a id="button" href="#open-modal">DISTRIBUIR GRUPOS</a>
     </div>
 
     <div class="scroller" data-direction="left" data-speed="fast">
         <div class="scroller__inner"></div>
     </div>
+
+    <div id="open-modal" class="modal-window">
+        <div>
+            <a href="#" title="Close" class="modal-close">Fechar</a>
+            <div>
+                <h1>Fazer a animação aqui</h1>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400");
 
-button {
+#button {
   border: calc(0.08 * var(--m)) solid transparent;
   position: relative;
   color: #f3f3f3;
@@ -11,6 +11,7 @@ button {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  text-decoration: none;
 
   background: linear-gradient(#121213, #121213),
     linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)),
@@ -24,13 +25,15 @@ button {
       var(--pink),
       var(--red)
     );
+
   background-origin: border-box;
   background-clip: padding-box, border-box, border-box;
   background-size: 200%;
   animation: animate 2s infinite linear;
+
 }
 
-button::before {
+#button::before {
   content: "";
   background: linear-gradient(
     90deg,
@@ -52,8 +55,8 @@ button::before {
   filter: blur(calc(0.8 * var(--m)));
 }
 
-button:hover,
-button:hover::before {
+#button:hover,
+#button:hover::before {
   animation: animate 0.5s infinite linear;
 }
 
