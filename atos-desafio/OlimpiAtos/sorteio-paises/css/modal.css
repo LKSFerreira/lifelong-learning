@@ -78,7 +78,6 @@
 }
 
 .grupo-bandeiras {
-  position: relative;
-  height: 50px; /* ou o tamanho que você desejar */
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
 }
