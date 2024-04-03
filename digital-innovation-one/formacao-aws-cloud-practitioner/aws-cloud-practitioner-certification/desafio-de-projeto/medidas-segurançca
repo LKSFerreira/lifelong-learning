@@ -1,0 +1,45 @@
+# RELATÓRIO DE IMPLEMENTAÇÃO DE MEDIDAS DE SEGURANÇA AWS
+
+Data: 14/01/2024  
+Empresa: Abstergo Industries  
+Responsável: Lucas Ferreira
+
+## Introdução
+
+Este relatório apresenta o processo de implementação de medidas de segurança na empresa Abstergo Industries, realizado por Lucas Ferreira. O objetivo do projeto foi elencar 3 serviços AWS, com a finalidade de aumentar a segurança da conta AWS.
+
+## Descrição do Projeto
+
+O projeto de implementação de medidas de segurança foi dividido em 3 etapas, cada uma com seus objetivos específicos. A seguir, serão descritas as etapas do projeto:
+
+### Etapa 1:
+
+- AWS Identity and Access Management (IAM)
+- Foco da ferramenta: Gerenciamento de acesso
+- Descrição de caso de uso: O IAM foi utilizado para controlar o acesso de usuários e grupos ao recursos da AWS, permitindo a criação de políticas de permissões granulares.
+
+### Etapa 2:
+
+- Amazon GuardDuty
+- Foco da ferramenta: Detecção de ameaças
+- Descrição de caso de uso: O Amazon GuardDuty foi utilizado para monitorar continuamente a conta AWS e os workloads para proteger contra atividades maliciosas ou não autorizadas.
+
+### Etapa 3:
+
+- AWS Shield
+- Foco da ferramenta: Proteção DDoS
+- Descrição de caso de uso: O AWS Shield foi utilizado para proteger as aplicações da empresa contra ataques DDoS, minimizando o tempo de inatividade e latência.
+
+## Conclusão
+
+A implementação de medidas de segurança na empresa Abstergo Industries tem como esperado o aumento da segurança da conta AWS, o que aumentará a confiabilidade e a integridade dos dados da empresa. Recomenda-se a continuidade da utilização das medidas de segurança implementadas e a busca por novas tecnologias que possam melhorar ainda mais a segurança da empresa.
+
+## Anexos
+
+- Manual do Usuário do AWS IAM
+- Guia de Início Rápido do Amazon GuardDuty
+- Documentação do AWS Shield
+
+Assinatura do Responsável pelo Projeto:
+
+Lucas Ferreira
