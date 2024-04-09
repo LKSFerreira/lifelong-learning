@@ -1,7 +1,5 @@
 package models;
 
-import interfaces.IClassificalvel;
-
 public class Filme extends Titulo {
 
     private String direto;
