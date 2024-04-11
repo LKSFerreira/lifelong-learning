@@ -4,10 +4,10 @@ import mapping.PessoaMapping;
 
 public class Pessoa {
 
-    String nome;
-    int idade;
-    String cidade;
-    String estado;
+    private String nome;
+    private int idade;
+    private String cidade;
+    private String estado;
 
     public Pessoa(PessoaMapping pessoaMapping) {
         this.nome = pessoaMapping.nome();
