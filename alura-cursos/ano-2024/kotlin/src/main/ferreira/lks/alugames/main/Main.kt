@@ -43,8 +43,7 @@ fun main() {
         var jogo: Jogo? = null
 
         runCatching {
-            val infoJogo = api.getJogo(idJogo)
-            jogo = Jogo(infoJogo.info.title, infoJogo.info.thumb)
+            jogo = api.getJogo(idJogo)
         }.onFailure {
             println("Jogo inexiste, por gentileza tente outro id")
         }.onSuccess {
