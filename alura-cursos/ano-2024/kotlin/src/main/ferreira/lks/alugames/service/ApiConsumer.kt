@@ -2,6 +2,7 @@ package lks.alugames.service
 
 import com.google.gson.Gson
 import lks.alugames.model.*
+import lks.alugames.utils.toGamer
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -26,7 +27,7 @@ class ApiConsumer {
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
 
         return Gson().fromJson(response.body(), Array<InfoGamerJson>::class.java).toList().map { infoGamerJson ->
-            Gamer(infoGamerJson.nome, infoGamerJson.email, infoGamerJson.dataNascimento, infoGamerJson.usuario)
+            infoGamerJson.toGamer()
         }
     }
 
