@@ -1,8 +1,8 @@
 package lks.alugames.main
 
-import lks.alugames.model.Periodo
-import lks.alugames.model.PlanoAssinatura
-import lks.alugames.service.ApiConsumer
+import lks.alugames.models.Periodo
+import lks.alugames.models.PlanoAssinatura
+import lks.alugames.services.ApiConsumer
 import java.time.LocalDate
 
 fun main() {
@@ -47,14 +47,14 @@ fun main() {
         Periodo(LocalDate.now(), LocalDate.now().plusDays(100))
     )
 
-    gamerCaroline.jogosAlugados.forEach {
+    gamerCaroline.listaJogosAlugados.forEach {
         println(it)
     }
 
     println("=====================================")
 
     val gamerCamila = gamers[5]
-    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3)
+    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3, 15)
 
     gamerCamila.alugaJogo(
         jogoResidenteVillage,
@@ -76,7 +76,7 @@ fun main() {
         Periodo(LocalDate.now(), LocalDate.now().plusDays(10))
     )
 
-    gamerCamila.jogosAlugados.forEach {
+    gamerCamila.listaJogosAlugados.forEach {
         println(it)
     }
 }

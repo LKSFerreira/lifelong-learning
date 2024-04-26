@@ -1,6 +1,6 @@
-package lks.alugames.model
+package lks.alugames.models
 
-import lks.alugames.model.InfoApiShark
+import lks.alugames.models.InfoApiShark
 
 data class InfoJogo(val info: InfoApiShark) {
     override fun toString(): String {

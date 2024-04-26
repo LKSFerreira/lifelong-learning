@@ -1,4 +1,4 @@
-package lks.alugames.model
+package lks.alugames.models
 
 data class InfoGamerJson(
     val nome: String,

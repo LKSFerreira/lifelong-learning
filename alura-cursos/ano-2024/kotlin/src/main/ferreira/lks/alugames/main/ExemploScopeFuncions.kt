@@ -1,6 +1,6 @@
 package lks.alugames.main
 
-import lks.alugames.model.Gamer
+import lks.alugames.models.Gamer
 
 fun main() {
     val gamer = Gamer("Lucas", "lks_ferreira@hotmail.com")

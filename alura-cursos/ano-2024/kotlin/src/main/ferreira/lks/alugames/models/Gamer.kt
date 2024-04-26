@@ -1,9 +1,11 @@
-package lks.alugames.model
+package lks.alugames.models
 
+import lks.alugames.interfaces.Recomendavel
+import lks.alugames.models.PlanoAvulso
 import java.util.*
 import kotlin.random.Random
 
-data class Gamer(val name: String, var email: String) {
+data class Gamer(val name: String, var email: String) : Recomendavel {
     var dataNascimento: String? = null
     var usuario: String? = null
         set(value) {
@@ -17,8 +19,9 @@ data class Gamer(val name: String, var email: String) {
         private set
 
     var plano: Plano = PlanoAvulso("BRONZE")
-    val jogos = mutableListOf<Jogo>()
-    val jogosAlugados = mutableListOf<Aluguel>()
+    val listaJogos = mutableListOf<Jogo>()
+    val listaJogosAlugados = mutableListOf<Aluguel>()
+    val listaNotas = mutableListOf<Int>()
 
 
     constructor(name: String, email: String, dataNascimento: String, usuario: String) :
@@ -46,12 +49,12 @@ data class Gamer(val name: String, var email: String) {
 
     fun alugaJogo(jogo: Jogo, periodo: Periodo): Aluguel {
         val jogoAlugado = Aluguel(this, jogo, periodo)
-        jogosAlugados.add(jogoAlugado)
+        listaJogosAlugados.add(jogoAlugado)
         return jogoAlugado
     }
 
     fun getJogosDoMes(mes: Int): List<Jogo> {
-        return jogosAlugados.filter {
+        return listaJogosAlugados.filter {
             it.periodo.dataInicial.monthValue == mes
         }.map {
             it.jogo
@@ -63,6 +66,13 @@ data class Gamer(val name: String, var email: String) {
         val tag = String.format("%04d", numero)
 
         idInterno = "$name#$tag"
+    }
+
+    override val media: Double
+        get() = listaNotas.average()
+
+    override fun recomendar(nota: Int) {
+        listaNotas.add(nota)
     }
 
     override fun toString(): String {

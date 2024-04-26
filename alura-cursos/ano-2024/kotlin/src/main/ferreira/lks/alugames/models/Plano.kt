@@ -1,4 +1,4 @@
-package lks.alugames.model
+package lks.alugames.models
 
 sealed class Plano(var tipo: String) {
     open fun getValorAluguel(aluguel: Aluguel): Double {

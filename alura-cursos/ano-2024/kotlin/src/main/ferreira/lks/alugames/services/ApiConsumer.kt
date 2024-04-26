@@ -1,7 +1,7 @@
-package lks.alugames.service
+package lks.alugames.services
 
 import com.google.gson.Gson
-import lks.alugames.model.*
+import lks.alugames.models.*
 import lks.alugames.utils.toGamer
 import lks.alugames.utils.toJogo
 import java.net.URI

@@ -1,4 +1,4 @@
-package lks.alugames.model
+package lks.alugames.models
 
 import java.time.LocalDate
 

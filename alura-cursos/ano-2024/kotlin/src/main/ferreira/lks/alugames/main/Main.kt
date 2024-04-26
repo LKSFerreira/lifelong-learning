@@ -1,8 +1,8 @@
 package lks.alugames.main
 
-import lks.alugames.model.Gamer
-import lks.alugames.model.Jogo
-import lks.alugames.service.ApiConsumer
+import lks.alugames.models.Gamer
+import lks.alugames.models.Jogo
+import lks.alugames.services.ApiConsumer
 import lks.alugames.utils.getIdadeByDataNascimento
 import java.util.*
 
@@ -59,32 +59,32 @@ fun main() {
             }
         }
         println(jogo)
-        gamer.jogos.add(jogo!!)
+        gamer.listaJogos.add(jogo!!)
         println("Deseja buscar outro jogo? (s/n)")
     } while (scanner.nextLine().equals("s", true))
 
     // Ordenando os jogos por título
-    gamer.jogos.sortedBy { it.titulo }.forEach(::println)
+    gamer.listaJogos.sortedBy { it.titulo }.forEach(::println)
 
     println("Jogos do gamer:")
-    gamer.jogos.forEach {
+    gamer.listaJogos.forEach {
         println("Título: ${it.titulo}")
     }
 
     println("=====================================")
 
     println("Filtro apenas com jogos que possuem batman no título")
-    gamer.jogos.filter { it.titulo.contains("batman", true) }.forEach(::println)
+    gamer.listaJogos.filter { it.titulo.contains("batman", true) }.forEach(::println)
 
     println("=====================================")
     println("Deseja excluír algum jogo? (s/n)")
 
     if (scanner.nextLine().equals("s", true)) {
-        println(gamer.jogos)
+        println(gamer.listaJogos)
 
         println("Digite index do jogo: ")
         val idJogo = scanner.nextInt()
-        gamer.jogos.removeAt(idJogo)
+        gamer.listaJogos.removeAt(idJogo)
         println("Jogo excluído com sucesso!")
 
     }

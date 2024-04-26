@@ -1,7 +1,7 @@
 package lks.alugames.utils
 
-import lks.alugames.model.InfoJogo
-import lks.alugames.model.Jogo
+import lks.alugames.models.InfoJogo
+import lks.alugames.models.Jogo
 
 fun InfoJogo.toJogo(): Jogo {
     return Jogo(
