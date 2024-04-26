@@ -1,5 +1,6 @@
 package lks.alugames.model
 
+import java.time.LocalDate
 import java.util.Scanner
 import kotlin.random.Random
 
@@ -16,6 +17,7 @@ data class Gamer(val name: String, var email: String) {
         private set
 
     val jogos = mutableListOf<Jogo>()
+    val jogosAlugados = mutableListOf<Aluguel>()
 
 
     constructor(name: String, email: String, dataNascimento: String, usuario: String) :
@@ -25,12 +27,12 @@ data class Gamer(val name: String, var email: String) {
         criaIdInterno()
     }
 
-    init {
-        if (name.isBlank()) {
-            throw IllegalArgumentException("Nome não pode ser vazio")
-        }
-        this.email = validarEmail()
-    }
+//    init {
+//        if (name.isBlank()) {
+//            throw IllegalArgumentException("Nome não pode ser vazio")
+//        }
+//        this.email = validarEmail()
+//    }
 
     private fun validarEmail(): String {
         val regex = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
@@ -39,6 +41,12 @@ data class Gamer(val name: String, var email: String) {
         } else {
             throw IllegalArgumentException("Email inválido")
         }
+    }
+
+    fun alugaJogo(jogo: Jogo, periodo: Periodo): Aluguel {
+        val jogoAlugado = Aluguel(this, jogo, periodo)
+        jogosAlugados.add(jogoAlugado)
+        return jogoAlugado
     }
 
     private fun criaIdInterno() {
