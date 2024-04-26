@@ -1,6 +1,7 @@
 package lks.alugames.models
 
 import lks.alugames.interfaces.Recomendavel
+import lks.alugames.utils.format
 import java.util.*
 import kotlin.random.Random
 
@@ -19,7 +20,7 @@ data class Gamer(val nome: String, var email: String) : Recomendavel {
 
     var plano: Plano = PlanoAvulso("BRONZE")
     val listaJogos = mutableListOf<Jogo>()
-    val listaJogosAlugados = mutableListOf<Aluguel>()
+    private val listaJogosAlugados = mutableListOf<Aluguel>()
     private val listaNotas = mutableListOf<Int>()
     val listaJogosRecomendados = mutableListOf<Jogo>()
 
@@ -86,7 +87,8 @@ data class Gamer(val nome: String, var email: String) : Recomendavel {
     }
 
     override fun toString(): String {
-        return "Gamer(name='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
+        return "Gamer(Nome: $nome, Email: $email, Data de Nascimento: $dataNascimento, " +
+                "Usuário: $usuario, Id Interno: $idInterno, Plano: $plano, Média: ${media.format(2)})"
     }
 
     companion object {

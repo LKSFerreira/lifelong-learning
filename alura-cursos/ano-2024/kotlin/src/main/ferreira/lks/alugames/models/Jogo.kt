@@ -2,6 +2,7 @@ package lks.alugames.models
 
 import com.google.gson.annotations.Expose
 import lks.alugames.interfaces.Recomendavel
+import lks.alugames.utils.format
 
 data class Jogo(@Expose val titulo: String, @Expose val capa: String) : Recomendavel {
     var preco: Double = 0.0
@@ -25,6 +26,6 @@ data class Jogo(@Expose val titulo: String, @Expose val capa: String) : Recomend
     }
 
     override fun toString(): String {
-        return "titulo: $titulo, capa: $capa, preço: $preco, descricao: $descricao"
+        return "titulo: $titulo, capa: $capa, preço: ${preco.format(2)}, descricao: $descricao"
     }
 }
