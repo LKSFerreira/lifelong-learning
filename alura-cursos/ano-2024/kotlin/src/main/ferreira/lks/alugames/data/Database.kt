@@ -1,6 +1,7 @@
 package lks.alugames.data
 
-import lks.alugames.models.Jogo
+import jakarta.persistence.EntityManager
+import jakarta.persistence.Persistence
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
@@ -28,6 +29,10 @@ object Database {
             e.printStackTrace()
             null
         }
+    }
+
+    fun getEntityManager(): EntityManager {
+        return Persistence.createEntityManagerFactory("alugames").createEntityManager()
     }
 }
 
