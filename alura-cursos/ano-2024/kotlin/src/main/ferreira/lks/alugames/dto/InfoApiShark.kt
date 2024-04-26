@@ -1,3 +1,3 @@
-package lks.alugames.models
+package lks.alugames.dto
 
 data class InfoApiShark(val title: String, val thumb: String)

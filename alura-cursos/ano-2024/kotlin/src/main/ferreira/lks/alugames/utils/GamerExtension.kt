@@ -1,7 +1,7 @@
 package lks.alugames.utils
 
 import lks.alugames.models.Gamer
-import lks.alugames.models.InfoGamerJson
+import lks.alugames.dto.InfoGamerJson
 
 fun InfoGamerJson.toGamer(): Gamer {
     return Gamer(

@@ -1,11 +1,12 @@
 package lks.alugames.data
 
+
 import jakarta.persistence.EntityManager
 import jakarta.persistence.Persistence
 import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
-import java.util.*
+import java.util.Properties
 
 object Database {
 

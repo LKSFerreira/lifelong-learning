@@ -1,6 +1,9 @@
 package lks.alugames.services
 
 import com.google.gson.Gson
+import lks.alugames.dto.InfoGamerJson
+import lks.alugames.dto.InfoJogo
+import lks.alugames.dto.InfoJogoJson
 import lks.alugames.models.*
 import lks.alugames.utils.toGamer
 import lks.alugames.utils.toJogo

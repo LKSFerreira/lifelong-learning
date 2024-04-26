@@ -1,22 +1,15 @@
 package lks.alugames.models
 
 import com.google.gson.annotations.Expose
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
 import lks.alugames.interfaces.Recomendavel
 import lks.alugames.utils.format
 import java.math.BigDecimal
 
-@Entity
-@Table(name = "jogos")
+
 data class Jogo(@Expose val titulo: String, @Expose val capa: String) : Recomendavel {
     var descricao: String = ""
     var preco: BigDecimal = BigDecimal.ZERO
-
-    @Id
     var id = 0
-
     private val listaNotas = mutableListOf<Int>()
 
     constructor(titulo: String, capa: String, preco: BigDecimal, descricao: String, id: Int) : this(titulo, capa) {
