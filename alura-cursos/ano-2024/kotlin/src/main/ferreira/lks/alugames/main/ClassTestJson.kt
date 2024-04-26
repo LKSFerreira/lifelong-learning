@@ -24,6 +24,8 @@ fun main() {
 
 
     val gamerCaroline = gamers[3]
+    gamerCaroline.plano.tipo = "BRONZE"
+
     val jogoResidenteVillage = jogos[10]
     val jogoSpider = jogos[13]
     val jogoTheLastOfUs = jogos[12]

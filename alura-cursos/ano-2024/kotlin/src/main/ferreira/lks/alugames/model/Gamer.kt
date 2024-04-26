@@ -1,7 +1,6 @@
 package lks.alugames.model
 
-import java.time.LocalDate
-import java.util.Scanner
+import java.util.*
 import kotlin.random.Random
 
 data class Gamer(val name: String, var email: String) {
@@ -13,9 +12,11 @@ data class Gamer(val name: String, var email: String) {
                 criaIdInterno()
             }
         }
+
     var idInterno: String? = null
         private set
 
+    var plano: PlanoAvulso = PlanoAvulso("BRONZE")
     val jogos = mutableListOf<Jogo>()
     val jogosAlugados = mutableListOf<Aluguel>()
 
