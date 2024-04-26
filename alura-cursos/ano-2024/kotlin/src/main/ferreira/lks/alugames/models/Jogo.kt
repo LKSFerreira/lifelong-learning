@@ -8,7 +8,7 @@ import java.math.BigDecimal
 data class Jogo(@Expose val titulo: String, @Expose val capa: String) : Recomendavel {
     var descricao: String = ""
     var preco: BigDecimal = BigDecimal.ZERO
-    var id = 0
+    private var id = 0
 
     private val listaNotas = mutableListOf<Int>()
 
@@ -29,6 +29,6 @@ data class Jogo(@Expose val titulo: String, @Expose val capa: String) : Recomend
     }
 
     override fun toString(): String {
-        return "Titulo: $titulo, Capa: $capa, Preço: ${preco.format(2)}, Descricao: $descricao"
+        return "ID: ${id}, Titulo: $titulo, Capa: $capa, Preço: ${preco.format(2)}, Descricao: $descricao"
     }
 }
