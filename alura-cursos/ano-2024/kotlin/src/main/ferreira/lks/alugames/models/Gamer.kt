@@ -72,7 +72,11 @@ data class Gamer(val name: String, var email: String) : Recomendavel {
         get() = listaNotas.average()
 
     override fun recomendar(nota: Int) {
-        listaNotas.add(nota)
+        if (nota in 1..10) {
+            listaNotas.add(nota)
+        } else {
+            throw IllegalArgumentException("Nota inválida")
+        }
     }
 
     override fun toString(): String {
