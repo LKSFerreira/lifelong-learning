@@ -4,9 +4,10 @@ import java.math.BigDecimal
 
 class PlanoAssinatura(
     tipo: String,
-    val mensalidade: Double,
+    private val mensalidade: Double,
     private val totalJogosInclusos: Int,
-    private val porcentagemDesconto: Int
+    private val porcentagemDesconto: Int,
+    id: Int = 0
 ) : Plano(tipo) {
 
     override fun getValorAluguel(aluguel: Aluguel): BigDecimal {
@@ -17,4 +18,15 @@ class PlanoAssinatura(
             return if (aluguel.gamer.media > 8) valorOriginal - valorOriginal * (porcentagemDesconto / 100).toBigDecimal() else valorOriginal
         }
     }
+
+    override fun toString(): String {
+        return "Plano Assinatura:\n" +
+                "Tipo: $tipo\n" +
+                "Id: $id\n" +
+                "Mensalidade: $mensalidade\n" +
+                "Total de jogos inclusos: $totalJogosInclusos\n" +
+                "Porcentagem de desconto: $porcentagemDesconto"
+    }
+
+
 }

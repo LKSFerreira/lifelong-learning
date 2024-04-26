@@ -14,7 +14,7 @@ data class Gamer(val nome: String, var email: String) : Recomendavel {
                 criaIdInterno()
             }
         }
-
+    var id = 0
     var idInterno: String? = null
         private set
 
@@ -24,10 +24,11 @@ data class Gamer(val nome: String, var email: String) : Recomendavel {
     private val listaNotas = mutableListOf<Int>()
     val listaJogosRecomendados = mutableListOf<Jogo>()
 
-    constructor(name: String, email: String, dataNascimento: String, usuario: String) :
+    constructor(name: String, email: String, dataNascimento: String, usuario: String, id: Int = 0) :
             this(name, email) {
-        this.usuario = usuario
         this.dataNascimento = dataNascimento
+        this.usuario = usuario
+        this.id = id
         criaIdInterno()
     }
 

@@ -6,14 +6,16 @@ import lks.alugames.utils.format
 import java.math.BigDecimal
 
 data class Jogo(@Expose val titulo: String, @Expose val capa: String) : Recomendavel {
-    var preco: BigDecimal = BigDecimal.ZERO
     var descricao: String = ""
+    var preco: BigDecimal = BigDecimal.ZERO
+    var id = 0
 
     private val listaNotas = mutableListOf<Int>()
 
-    constructor(titulo: String, capa: String, preco: BigDecimal, descricao: String) : this(titulo, capa) {
+    constructor(titulo: String, capa: String, preco: BigDecimal, descricao: String, id: Int) : this(titulo, capa) {
         this.preco = preco
         this.descricao = descricao
+        this.id = id
     }
 
     override val media: Double
