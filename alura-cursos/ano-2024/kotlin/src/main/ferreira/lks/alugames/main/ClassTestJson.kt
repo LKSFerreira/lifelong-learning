@@ -1,28 +1,16 @@
 package lks.alugames.main
 
+import com.google.gson.GsonBuilder
 import lks.alugames.models.Periodo
 import lks.alugames.models.PlanoAssinatura
 import lks.alugames.services.ApiConsumer
+import java.io.File
 import java.time.LocalDate
 
 fun main() {
     val apiConsumer = ApiConsumer()
-
     val gamers = apiConsumer.getAllGamers()
-    /*        gamers.forEach {
-                println(it)
-            }*/
-
-
     val jogos = apiConsumer.getAllJogos()
-    /*        jogos.forEach {
-                println(it)
-            }*/
-
-
-    /*        val jogo = apiConsumer.getJogo("323")
-            println(jogo)*/
-
 
     val gamerCaroline = gamers[3]
     gamerCaroline.plano.tipo = "BRONZE"
@@ -47,12 +35,6 @@ fun main() {
         Periodo(LocalDate.now(), LocalDate.now().plusDays(100))
     )
 
-    gamerCaroline.listaJogosAlugados.forEach {
-        println(it)
-    }
-
-    println("=====================================")
-
     val gamerCamila = gamers[5]
     gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3, 15)
 
@@ -76,7 +58,32 @@ fun main() {
         Periodo(LocalDate.now(), LocalDate.now().plusDays(10))
     )
 
-    gamerCamila.listaJogosAlugados.forEach {
-        println(it)
-    }
+    gamerCamila.recomendar(7)
+    gamerCamila.recomendar(10)
+    gamerCamila.recomendar(9)
+
+    gamerCamila.alugaJogo(
+        theWitcher3,
+        Periodo(LocalDate.now(), LocalDate.now().plusDays(10))
+    )
+
+    gamerCamila.recomendarJogo(jogoResidenteVillage, 7)
+    gamerCamila.recomendarJogo(jogoTheLastOfUs, 9)
+    gamerCamila.recomendarJogo(jogoSpider, 7)
+    gamerCamila.recomendarJogo(theWitcher3, 10)
+
+
+    gamerCaroline.recomendarJogo(jogoResidenteVillage, 7)
+    gamerCaroline.recomendarJogo(jogoTheLastOfUs, 10)
+
+
+    val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
+    val jogosSerializados = gson.toJson(gamerCamila.listaJogosRecomendados)
+    println(jogosSerializados)
+
+    val arquivo = File("JogosRecomendadosPor-${gamerCamila.nome}.json")
+    arquivo.writeText(jogosSerializados)
+    println("Arquivo salvo em ${arquivo.absolutePath}")
+
+
 }

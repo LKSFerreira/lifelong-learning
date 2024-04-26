@@ -1,11 +1,10 @@
 package lks.alugames.models
 
 import lks.alugames.interfaces.Recomendavel
-import lks.alugames.models.PlanoAvulso
 import java.util.*
 import kotlin.random.Random
 
-data class Gamer(val name: String, var email: String) : Recomendavel {
+data class Gamer(val nome: String, var email: String) : Recomendavel {
     var dataNascimento: String? = null
     var usuario: String? = null
         set(value) {
@@ -21,8 +20,8 @@ data class Gamer(val name: String, var email: String) : Recomendavel {
     var plano: Plano = PlanoAvulso("BRONZE")
     val listaJogos = mutableListOf<Jogo>()
     val listaJogosAlugados = mutableListOf<Aluguel>()
-    val listaNotas = mutableListOf<Int>()
-
+    private val listaNotas = mutableListOf<Int>()
+    val listaJogosRecomendados = mutableListOf<Jogo>()
 
     constructor(name: String, email: String, dataNascimento: String, usuario: String) :
             this(name, email) {
@@ -65,22 +64,29 @@ data class Gamer(val name: String, var email: String) : Recomendavel {
         val numero = Random.nextInt(10000)
         val tag = String.format("%04d", numero)
 
-        idInterno = "$name#$tag"
+        idInterno = "$nome#$tag"
     }
 
     override val media: Double
         get() = listaNotas.average()
 
     override fun recomendar(nota: Int) {
-        if (nota in 1..10) {
-            listaNotas.add(nota)
-        } else {
+        if (nota !in 1..10) {
             throw IllegalArgumentException("Nota inválida")
         }
+        listaNotas.add(nota)
+    }
+
+    fun recomendarJogo(jogo: Jogo, nota: Int) {
+        if (nota !in 1..10) {
+            throw IllegalArgumentException("Nota inválida")
+        }
+        jogo.recomendar(nota)
+        listaJogosRecomendados.add(jogo)
     }
 
     override fun toString(): String {
-        return "Gamer(name='$name', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
+        return "Gamer(name='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
     }
 
     companion object {

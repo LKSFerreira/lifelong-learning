@@ -42,7 +42,7 @@ fun main() {
     val userData = with(gamerExemplos) {
         println("Criando dados do usuário")
         // Executa várias operações, a última linha é o retorno
-        "Nome: $name, Email: $email"
+        "Nome: $nome, Email: $email"
     }
     println(userData)
 
