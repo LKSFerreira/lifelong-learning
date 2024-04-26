@@ -34,7 +34,7 @@ class ApiConsumer {
     fun getAllJogos(): List<Jogo> {
         val response = getEndpointApi("https://raw.githubusercontent.com/jeniblodev/arquivosJson/main/jogos.json")
         return Gson().fromJson(response.body(), Array<InfoJogoJson>::class.java).toList().map { infoJogoJson ->
-            Jogo(infoJogoJson.titulo, infoJogoJson.capa, infoJogoJson.preco, infoJogoJson.descricao)
+            Jogo(infoJogoJson.titulo, infoJogoJson.capa, infoJogoJson.preco.toBigDecimal(), infoJogoJson.descricao, 0)
         }
     }
 }

@@ -4,7 +4,10 @@ import lks.alugames.models.Aluguel
 import lks.alugames.models.Plano
 import java.math.BigDecimal
 
-class PlanoAvulso(tipo: String, id: Int = 0) : Plano(tipo) {
+class PlanoAvulso(
+    tipo: String,
+//    id: Int = 0
+) : Plano(tipo) {
 
     override fun getValorAluguel(aluguel: Aluguel): BigDecimal {
         val valorOriginal = super.getValorAluguel(aluguel)

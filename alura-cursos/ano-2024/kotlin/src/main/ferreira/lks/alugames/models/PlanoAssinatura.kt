@@ -7,7 +7,7 @@ class PlanoAssinatura(
     private val mensalidade: Double,
     private val totalJogosInclusos: Int,
     private val porcentagemDesconto: Int,
-    id: Int = 0
+//    id: Int = 0
 ) : Plano(tipo) {
 
     override fun getValorAluguel(aluguel: Aluguel): BigDecimal {
