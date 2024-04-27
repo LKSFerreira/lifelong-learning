@@ -55,7 +55,7 @@ fun main() {
 
                 jogo?.descricao = descricaoPersonalizada
             } else {
-                jogo!!.descricao = jogo!!.titulo
+                jogo?.descricao = jogo!!.titulo
             }
         }
         println(jogo)

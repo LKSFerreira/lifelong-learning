@@ -1,60 +1,16 @@
 package lks.alugames.data
 
+import jakarta.persistence.EntityManager
+import lks.alugames.dto.JogoDTO
 import lks.alugames.models.Jogo
 
-object JogoDAO {
-    fun getAll(): List<Jogo> {
-        val listaJogos = mutableListOf<Jogo>()
+class JogoDAO(private val entityManager: EntityManager) : DAO<Jogo, JogoDTO>(entityManager, JogoDTO::class.java) {
 
-        Database.getConnection()?.use { connection ->
-            val statement = connection.createStatement()
-            val resultSet = statement.executeQuery("SELECT * FROM jogos")
-            while (resultSet.next()) {
-                val jogo = Jogo(
-                    resultSet.getString("titulo"),
-                    resultSet.getString("capa"),
-                    resultSet.getBigDecimal("preco"),
-                    resultSet.getString("descricao"),
-                    resultSet.getInt("id")
-                )
-                listaJogos.add(jogo)
-            }
-        }
-        return listaJogos
+    override fun toEntityDTO(model: Jogo): JogoDTO {
+        return JogoDTO(model.id, model.titulo, model.capa, model.preco.toDouble(), model.descricao)
     }
 
-    fun getById(id: Int): Jogo? {
-        var jogo: Jogo? = null
-
-        Database.getConnection()?.use { connection ->
-            val statement = connection.prepareStatement("SELECT * FROM jogos WHERE id = ?")
-            statement.setInt(1, id)
-            val resultSet = statement.executeQuery()
-            if (resultSet.next()) {
-                jogo = Jogo(
-                    resultSet.getString("titulo"),
-                    resultSet.getString("capa"),
-                    resultSet.getBigDecimal("preco"),
-                    resultSet.getString("descricao"),
-                    resultSet.getInt("id")
-                )
-            }
-        }
-        return jogo
-    }
-
-    fun create(jogo: Jogo): Boolean {
-        var result = false
-
-        Database.getConnection()?.use { connection ->
-            val statement =
-                connection.prepareStatement("INSERT INTO jogos (titulo, capa, preco, descricao) VALUES (?, ?, ?, ?)")
-            statement.setString(1, jogo.titulo)
-            statement.setString(2, jogo.capa)
-            statement.setBigDecimal(3, jogo.preco)
-            statement.setString(4, jogo.descricao)
-            result = statement.executeUpdate() == 1
-        }
-        return result
+    override fun toModel(entityDTO: JogoDTO): Jogo {
+        return Jogo(entityDTO.id, entityDTO.titulo, entityDTO.capa, entityDTO.preco.toBigDecimal(), entityDTO.descricao)
     }
 }

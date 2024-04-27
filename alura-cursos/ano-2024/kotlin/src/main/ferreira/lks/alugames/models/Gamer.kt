@@ -14,7 +14,7 @@ data class Gamer(val nome: String, var email: String) : Recomendavel {
                 criaIdInterno()
             }
         }
-    var id = 0
+    var id: Int = 0
     var idInterno: String? = null
         private set
 
@@ -24,8 +24,8 @@ data class Gamer(val nome: String, var email: String) : Recomendavel {
     private val listaNotas = mutableListOf<Int>()
     val listaJogosRecomendados = mutableListOf<Jogo>()
 
-    constructor(name: String, email: String, dataNascimento: String, usuario: String, id: Int = 0) :
-            this(name, email) {
+    constructor(nome: String, email: String, dataNascimento: String, usuario: String, id: Int = 0) :
+            this(nome, email) {
         this.dataNascimento = dataNascimento
         this.usuario = usuario
         this.id = id
@@ -88,8 +88,15 @@ data class Gamer(val nome: String, var email: String) : Recomendavel {
     }
 
     override fun toString(): String {
-        return "Gamer(Nome: $nome, Email: $email, Data de Nascimento: $dataNascimento, " +
-                "Usuário: $usuario, Id Interno: $idInterno, Plano: $plano, Média: ${media.format(2)})"
+        return "Gamer\n" +
+                "ID: $id\n" +
+                "Nome: $nome,\n" +
+                "Email: $email,\n" +
+                "Data de Nascimento: $dataNascimento,\n" +
+                "Usuário: $usuario,\n" +
+                "Id Interno: $idInterno,\n" +
+                "Plano: $plano,\n" +
+                "Média: ${media.format(2)}"
     }
 
     companion object {

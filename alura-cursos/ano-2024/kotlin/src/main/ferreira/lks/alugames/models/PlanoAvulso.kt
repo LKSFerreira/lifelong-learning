@@ -1,12 +1,9 @@
 package lks.alugames.models
 
-import lks.alugames.models.Aluguel
-import lks.alugames.models.Plano
 import java.math.BigDecimal
 
 class PlanoAvulso(
     tipo: String,
-//    id: Int = 0
 ) : Plano(tipo) {
 
     override fun getValorAluguel(aluguel: Aluguel): BigDecimal {
@@ -15,9 +12,8 @@ class PlanoAvulso(
     }
 
     override fun toString(): String {
-        return "PlanoAvulso:\n" +
-                "Tipo: $tipo\n" +
-                "Id: $id"
+        return "=== PlanoAvulso ===\n" +
+                "Tipo: $tipo - Id do Plano: $id"
     }
 
 

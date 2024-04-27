@@ -9,13 +9,18 @@ import java.math.BigDecimal
 data class Jogo(@Expose val titulo: String, @Expose val capa: String) : Recomendavel {
     var descricao: String = ""
     var preco: BigDecimal = BigDecimal.ZERO
-    var id = 0
+    var id: Int = 0
     private val listaNotas = mutableListOf<Int>()
 
-    constructor(titulo: String, capa: String, preco: BigDecimal, descricao: String, id: Int) : this(titulo, capa) {
+    constructor(titulo: String, capa: String, preco: BigDecimal, descricao: String) : this(titulo, capa) {
         this.preco = preco
         this.descricao = descricao
+    }
+
+    constructor(id: Int, titulo: String, capa: String, preco: BigDecimal, descricao: String) : this(titulo, capa) {
         this.id = id
+        this.preco = preco
+        this.descricao = descricao
     }
 
     override val media: Double

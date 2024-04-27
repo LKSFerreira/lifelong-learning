@@ -7,7 +7,6 @@ class PlanoAssinatura(
     private val mensalidade: Double,
     private val totalJogosInclusos: Int,
     private val porcentagemDesconto: Int,
-//    id: Int = 0
 ) : Plano(tipo) {
 
     override fun getValorAluguel(aluguel: Aluguel): BigDecimal {
@@ -20,9 +19,9 @@ class PlanoAssinatura(
     }
 
     override fun toString(): String {
-        return "Plano Assinatura:\n" +
+        return "=== Plano Assinatura ===\n" +
                 "Tipo: $tipo\n" +
-                "Id: $id\n" +
+                "Id do Plano: $id\n" +
                 "Mensalidade: $mensalidade\n" +
                 "Total de jogos inclusos: $totalJogosInclusos\n" +
                 "Porcentagem de desconto: $porcentagemDesconto"
