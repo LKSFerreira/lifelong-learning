@@ -23,6 +23,7 @@ sealed class DAO<TModel, TEntityDTO>(
             println("Insert realizado com sucesso")
             true
         } catch (e: Exception) {
+            println("Falha ao realizar insert")
             entityManager.transaction.rollback()
             false
         }
@@ -42,6 +43,7 @@ sealed class DAO<TModel, TEntityDTO>(
             println("Update realizado com sucesso")
             true
         } catch (e: Exception) {
+            println("Falha ao realizar update")
             entityManager.transaction.rollback()
             false
         }
@@ -56,6 +58,7 @@ sealed class DAO<TModel, TEntityDTO>(
             println("Delete realizado com sucesso")
             true
         } catch (e: Exception) {
+            println("Falha ao realizar delete")
             entityManager.transaction.rollback()
             false
         }

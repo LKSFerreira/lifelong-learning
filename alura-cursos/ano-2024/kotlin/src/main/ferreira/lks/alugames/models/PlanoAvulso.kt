@@ -4,7 +4,8 @@ import java.math.BigDecimal
 
 class PlanoAvulso(
     tipo: String,
-) : Plano(tipo) {
+    id: Int = 0
+) : Plano(tipo,id) {
 
     override fun getValorAluguel(aluguel: Aluguel): BigDecimal {
         val valorOriginal = super.getValorAluguel(aluguel)
