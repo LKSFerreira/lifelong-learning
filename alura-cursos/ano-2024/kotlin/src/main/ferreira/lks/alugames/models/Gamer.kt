@@ -7,14 +7,14 @@ import kotlin.random.Random
 
 data class Gamer(val nome: String, var email: String) : Recomendavel {
     var dataNascimento: String? = null
-    var usuario: String? = null
+    var usuario: String = ""
         set(value) {
             field = value
             if (idInterno.isNullOrBlank()) {
                 criaIdInterno()
             }
         }
-    var id: Int = 0
+    var id: Int = 1
     var idInterno: String? = null
         private set
 

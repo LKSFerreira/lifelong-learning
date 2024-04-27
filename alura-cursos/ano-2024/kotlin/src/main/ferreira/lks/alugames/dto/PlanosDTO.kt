@@ -6,7 +6,7 @@ import jakarta.persistence.*
 @Table(name = "planos")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TipoPlano", discriminatorType = DiscriminatorType.STRING)
-sealed class PlanoDTO( // Alterado de 'sealed' para 'abstract'
+sealed class PlanoDTO(
     val tipo: String,
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Int = 0
 ) {
