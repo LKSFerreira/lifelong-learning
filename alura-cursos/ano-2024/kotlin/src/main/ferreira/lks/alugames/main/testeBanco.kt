@@ -7,13 +7,14 @@ import lks.alugames.models.Jogo
 
 fun main() {
     val entityManager = Database.getEntityManager()
+    val jogoDAO = JogoDAO(entityManager)
     val jogo = Jogo("The Last of Us", "https://www.google.com", 100.0.toBigDecimal(), "Jogo de sobrevivência")
 
-    var jogoCriado = JogoDAO(entityManager).create(jogo)
-    println("Jogo criado: $jogoCriado")
+//    JogoDAO(entityManager).create(jogo)
+
 
     println("\nJogos com JPA")
-    val listaJogosJPA = JogoDAO(entityManager).getAll()
+    val listaJogosJPA = jogoDAO.getAll()
     listaJogosJPA.forEach { println(it) }
 
     /*    val gamer = Gamer("Lucas", "lks@email.com", "1990-01-01", "lksferreira")
@@ -21,8 +22,15 @@ fun main() {
 
 //    GamerJPA(entityManager).create(gamer)
 
-    val listaGamers = GamerDAO(entityManager).getAll()
-    listaGamers.forEach { println(it) }
+//    val listaGamers = GamerDAO(entityManager).getAll()
+//    listaGamers.forEach { println(it) }
+
+    println("Executado getByID")
+    val jogoById = jogoDAO.getById(1)
+    println(jogoById)
+
+    println("Deletado pelo ID")
+    jogoDAO.delete(4)
 
     entityManager.close()
 }

@@ -27,4 +27,39 @@ sealed class DAO<TModel, TEntityDTO>(
             false
         }
     }
+
+    fun getById(id: Int): TModel? {
+        val entityDTO = entityManager.find(entityDTO, id)
+        return entityDTO?.let { toModel(it) }
+    }
+
+    fun update(model: TModel): Boolean {
+        val entityDTO = toEntityDTO(model)
+        return try {
+            entityManager.transaction.begin()
+            entityManager.merge(entityDTO)
+            entityManager.transaction.commit()
+            println("Update realizado com sucesso")
+            true
+        } catch (e: Exception) {
+            entityManager.transaction.rollback()
+            false
+        }
+    }
+
+    fun delete(id: Int): Boolean {
+        val entityDTO = entityManager.find(entityDTO, id)
+        return try {
+            entityManager.transaction.begin()
+            entityManager.remove(entityDTO)
+            entityManager.transaction.commit()
+            println("Delete realizado com sucesso")
+            true
+        } catch (e: Exception) {
+            entityManager.transaction.rollback()
+            false
+        }
+    }
+
+
 }
