@@ -3,7 +3,7 @@ package lks.alugames.main
 import lks.alugames.models.Gamer
 import lks.alugames.models.Jogo
 import lks.alugames.services.ApiConsumer
-import lks.alugames.utils.getIdadeByDataNascimento
+import lks.alugames.extensions.getIdadeByDataNascimento
 import java.util.*
 
 fun main() {

@@ -1,21 +1,17 @@
 package lks.alugames.data
 
 import jakarta.persistence.EntityManager
-import lks.alugames.dto.PlanoAssinaturaDTO
-import lks.alugames.dto.PlanoAvulsoDTO
-import lks.alugames.dto.PlanoDTO
+import lks.alugames.entity.PlanoEntity
+import lks.alugames.extensions.toEntity
+import lks.alugames.extensions.toModel
 import lks.alugames.models.Plano
-import lks.alugames.models.PlanoAssinatura
-import lks.alugames.models.PlanoAvulso
-import lks.alugames.utils.toEntityDTO
-import lks.alugames.utils.toModel
 
-class PlanosDAO(entityManager: EntityManager) : DAO<Plano, PlanoDTO>(entityManager, PlanoDTO::class.java) {
-    override fun toEntityDTO(plano: Plano): PlanoDTO {
-        return plano.toEntityDTO()
+class PlanosDAO(entityManager: EntityManager) : DAO<Plano, PlanoEntity>(entityManager, PlanoEntity::class.java) {
+    override fun toEntity(model: Plano): PlanoEntity {
+        return model.toEntity()
     }
 
-    override fun toModel(entityDTO: PlanoDTO): Plano {
-        return entityDTO.toModel()
+    override fun toModel(entity: PlanoEntity): Plano {
+        return entity.toModel()
     }
 }

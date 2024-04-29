@@ -8,7 +8,8 @@ data class Aluguel(
     val jogo: Jogo,
     val periodo: Periodo
 ) {
-    private val valorDoAluguel: BigDecimal = gamer.plano.getValorAluguel(this)
+    val valorDoAluguel: BigDecimal = gamer.plano.getValorAluguel(this)
+    var id: Int = 0
 
     override fun toString(): String {
         return "Jogo: ${jogo.titulo} alugado por ${gamer.nome} pelo valor total de R$ ${valorDoAluguel.format(2)}"

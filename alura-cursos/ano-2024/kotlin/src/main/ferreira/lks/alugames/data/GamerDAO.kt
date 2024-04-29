@@ -1,33 +1,33 @@
 package lks.alugames.data
 
 import jakarta.persistence.EntityManager
-import lks.alugames.dto.GamerDTO
+import lks.alugames.entity.GamerEntity
 import lks.alugames.models.Gamer
-import lks.alugames.utils.toDate
-import lks.alugames.utils.toEntityDTO
-import lks.alugames.utils.toModel
+import lks.alugames.extensions.toDate
+import lks.alugames.extensions.toEntity
+import lks.alugames.extensions.toModel
 
-class GamerDAO(private val entityManager: EntityManager) : DAO<Gamer, GamerDTO>(entityManager, GamerDTO::class.java) {
+class GamerDAO(private val entityManager: EntityManager) : DAO<Gamer, GamerEntity>(entityManager, GamerEntity::class.java) {
 
-    override fun toEntityDTO(gamer: Gamer): GamerDTO {
-        return GamerDTO(
-            gamer.id,
-            gamer.nome,
-            gamer.email,
-            gamer.dataNascimento!!.toDate(),
-            gamer.usuario,
-            gamer.plano.toEntityDTO()
+    override fun toEntity(model: Gamer): GamerEntity {
+        return GamerEntity(
+            model.id,
+            model.nome,
+            model.email,
+            model.dataNascimento!!.toDate(),
+            model.usuario,
+            model.plano.toEntity()
         )
     }
 
-    override fun toModel(entityDTO: GamerDTO): Gamer {
+    override fun toModel(entity: GamerEntity): Gamer {
         return Gamer(
-            entityDTO.nome,
-            entityDTO.email,
-            entityDTO.dataNascimento.toString(),
-            entityDTO.usuario,
-            entityDTO.id
-        ).apply { plano = entityDTO.plano.toModel() }
+            entity.nome,
+            entity.email,
+            entity.dataNascimento.toString(),
+            entity.usuario,
+            entity.id
+        ).apply { plano = entity.plano.toModel() }
     }
 
 

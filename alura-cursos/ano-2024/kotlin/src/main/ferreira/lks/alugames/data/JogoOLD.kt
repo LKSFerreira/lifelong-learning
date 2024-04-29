@@ -1,17 +1,17 @@
 package lks.alugames.data
 
-import lks.alugames.dto.JogoDTO
+import lks.alugames.entity.JogoEntity
 import lks.alugames.models.Jogo
 
 object JogoOLD {
-    fun getAll(): List<JogoDTO> {
-        val listaJogos = mutableListOf<JogoDTO>()
+    fun getAll(): List<JogoEntity> {
+        val listaJogos = mutableListOf<JogoEntity>()
 
         Database.getConnection()?.use { connection ->
             val statement = connection.createStatement()
             val resultSet = statement.executeQuery("SELECT * FROM jogos")
             while (resultSet.next()) {
-                val jogoDTO = JogoDTO(
+                val jogoDTO = JogoEntity(
                     resultSet.getInt("id"),
                     resultSet.getString("titulo"),
                     resultSet.getString("capa"),
@@ -24,15 +24,15 @@ object JogoOLD {
         return listaJogos
     }
 
-    fun getById(id: Int): JogoDTO? {
-        var jogoDTO: JogoDTO? = null
+    fun getById(id: Int): JogoEntity? {
+        var jogoDTO: JogoEntity? = null
 
         Database.getConnection()?.use { connection ->
             val statement = connection.prepareStatement("SELECT * FROM jogos WHERE id = ?")
             statement.setInt(1, id)
             val resultSet = statement.executeQuery()
             if (resultSet.next()) {
-                jogoDTO = JogoDTO(
+                jogoDTO = JogoEntity(
                     resultSet.getInt("id"),
                     resultSet.getString("titulo"),
                     resultSet.getString("capa"),

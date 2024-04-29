@@ -2,23 +2,23 @@ package lks.alugames.data
 
 import jakarta.persistence.EntityManager
 
-sealed class DAO<TModel, TEntityDTO>(
+sealed class DAO<TModel, TEntity>(
     private val entityManager: EntityManager,
-    private val entityDTO: Class<TEntityDTO>
+    private val entity: Class<TEntity>
 ) {
-    abstract fun toEntityDTO(model: TModel): TEntityDTO
-    abstract fun toModel(entityDTO: TEntityDTO): TModel
+    abstract fun toEntity(model: TModel): TEntity
+    abstract fun toModel(entity: TEntity): TModel
 
     fun getAll(): List<TModel> {
-        val query = entityManager.createQuery("FROM ${entityDTO.simpleName}", entityDTO)
+        val query = entityManager.createQuery("FROM ${entity.simpleName}", entity)
         return query.resultList.map { entityDTO -> toModel(entityDTO) }
     }
 
     fun create(model: TModel): Boolean {
-        val entityDTO = toEntityDTO(model)
+        val entity = toEntity(model)
         return try {
             entityManager.transaction.begin()
-            entityManager.persist(entityDTO)
+            entityManager.persist(entity)
             entityManager.transaction.commit()
             println("Insert realizado com sucesso")
             true
@@ -30,15 +30,15 @@ sealed class DAO<TModel, TEntityDTO>(
     }
 
     fun getById(id: Int): TModel? {
-        val entityDTO = entityManager.find(entityDTO, id)
-        return entityDTO?.let { toModel(it) }
+        val entity = entityManager.find(entity, id)
+        return entity?.let { toModel(it) }
     }
 
     fun update(model: TModel): Boolean {
-        val entityDTO = toEntityDTO(model)
+        val entity = toEntity(model)
         return try {
             entityManager.transaction.begin()
-            entityManager.merge(entityDTO)
+            entityManager.merge(entity)
             entityManager.transaction.commit()
             println("Update realizado com sucesso")
             true
@@ -50,10 +50,10 @@ sealed class DAO<TModel, TEntityDTO>(
     }
 
     fun delete(id: Int): Boolean {
-        val entityDTO = entityManager.find(entityDTO, id)
+        val entity = entityManager.find(entity, id)
         return try {
             entityManager.transaction.begin()
-            entityManager.remove(entityDTO)
+            entityManager.remove(entity)
             entityManager.transaction.commit()
             println("Delete realizado com sucesso")
             true

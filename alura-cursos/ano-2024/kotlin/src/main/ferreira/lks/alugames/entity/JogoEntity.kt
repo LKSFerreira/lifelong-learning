@@ -1,10 +1,10 @@
-package lks.alugames.dto
+package lks.alugames.entity
 
 import jakarta.persistence.*
 
 @Entity
 @Table(name = "jogos")
-open class JogoDTO(
+open class JogoEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0,

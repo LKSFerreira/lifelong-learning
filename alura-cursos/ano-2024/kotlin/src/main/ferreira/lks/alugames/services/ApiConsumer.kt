@@ -5,8 +5,8 @@ import lks.alugames.dto.InfoGamerJson
 import lks.alugames.dto.InfoJogo
 import lks.alugames.dto.InfoJogoJson
 import lks.alugames.models.*
-import lks.alugames.utils.toGamer
-import lks.alugames.utils.toJogo
+import lks.alugames.extensions.toGamer
+import lks.alugames.extensions.toJogo
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest

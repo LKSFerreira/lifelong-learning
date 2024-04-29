@@ -1,4 +1,4 @@
-package lks.alugames.dto
+package lks.alugames.entity
 
 import jakarta.persistence.*
 
@@ -6,7 +6,7 @@ import jakarta.persistence.*
 @Table(name = "planos")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TipoPlano", discriminatorType = DiscriminatorType.STRING)
-sealed class PlanoDTO(
+sealed class PlanoEntity(
     val tipo: String,
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var id: Int = 0
 ) {
@@ -15,14 +15,14 @@ sealed class PlanoDTO(
 
 @Entity
 @DiscriminatorValue("Avulso")
-class PlanoAvulsoDTO(tipo: String = "Plano Avulso", id: Int = 0) : PlanoDTO(tipo, id)
+class PlanoAvulsoEntity(tipo: String = "Plano Avulso", id: Int = 0) : PlanoEntity(tipo, id)
 
 @Entity
 @DiscriminatorValue("Assinatura")
-class PlanoAssinaturaDTO(
+class PlanoAssinaturaEntity(
     tipo: String = "Plano Assinatura",
     val mensalidade: Double = 0.0,
     val totalJogosInclusos: Int = 0,
     val descontoEmPorcentagem: Int = 0,
     id: Int = 0
-) : PlanoDTO(tipo, id)
+) : PlanoEntity(tipo, id)

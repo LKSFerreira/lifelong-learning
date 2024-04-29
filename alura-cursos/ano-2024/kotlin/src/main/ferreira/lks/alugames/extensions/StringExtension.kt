@@ -1,4 +1,4 @@
-package lks.alugames.utils
+package lks.alugames.extensions
 
 import java.text.SimpleDateFormat
 import java.time.LocalDate

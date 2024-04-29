@@ -1,11 +1,11 @@
-package lks.alugames.dto
+package lks.alugames.entity
 
 import jakarta.persistence.*
 import java.util.Date
 
 @Entity
 @Table(name = "gamers")
-open class GamerDTO(
+open class GamerEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 1,
@@ -14,5 +14,5 @@ open class GamerDTO(
     val dataNascimento: Date = Date(),
     val usuario: String = "Usuário do Gamer",
     @ManyToOne
-    val plano: PlanoDTO = PlanoAvulsoDTO()
+    val plano: PlanoEntity = PlanoAvulsoEntity()
 )

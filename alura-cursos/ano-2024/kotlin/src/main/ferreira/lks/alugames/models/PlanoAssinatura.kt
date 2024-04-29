@@ -8,7 +8,7 @@ class PlanoAssinatura(
     val totalJogosInclusos: Int,
     val descontoEmPorcentagem: Int,
     id: Int = 0
-) : Plano(tipo) {
+) : Plano(tipo, id) {
 
     override fun getValorAluguel(aluguel: Aluguel): BigDecimal {
         return if (totalJogosInclusos > aluguel.gamer.getJogosDoMes(aluguel.periodo.dataInicial.monthValue).size) {

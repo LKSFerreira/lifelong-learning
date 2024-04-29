@@ -1,4 +1,4 @@
-package lks.alugames.utils
+package lks.alugames.extensions
 
 import lks.alugames.dto.InfoJogo
 import lks.alugames.models.Jogo

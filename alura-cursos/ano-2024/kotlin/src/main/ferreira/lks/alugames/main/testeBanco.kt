@@ -8,7 +8,7 @@ import lks.alugames.models.Jogo
 fun main() {
     val entityManager = Database.getEntityManager()
     val jogoDAO = JogoDAO(entityManager)
-    val jogo = Jogo("The Last of Us", "https://www.google.com", 100.0.toBigDecimal(), "Jogo de sobrevivência")
+//    val jogo = Jogo("The Last of Us", "https://www.google.com", 100.0.toBigDecimal(), "Jogo de sobrevivência")
 
 //    JogoDAO(entityManager).create(jogo)
 

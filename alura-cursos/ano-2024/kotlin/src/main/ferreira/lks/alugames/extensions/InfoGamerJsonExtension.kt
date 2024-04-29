@@ -1,4 +1,4 @@
-package lks.alugames.utils
+package lks.alugames.extensions
 
 import lks.alugames.models.Gamer
 import lks.alugames.dto.InfoGamerJson

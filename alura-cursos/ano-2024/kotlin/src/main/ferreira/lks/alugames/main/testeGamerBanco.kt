@@ -9,11 +9,11 @@ fun main() {
     val entityManager = Database.getEntityManager()
     val gamerDAO = GamerDAO(entityManager)
 
-    val gamer = Gamer( "Ferreira", "ferreia@email.com", "1999-01-01", "ferreira")
-
-    gamer.plano = PlanosDAO(entityManager).getById(1)!!
-
-    gamerDAO.create(gamer)
+//    val gamer = Gamer( "Ferreira", "ferreia@email.com", "1999-01-01", "ferreira")
+//
+//    gamer.plano = PlanosDAO(entityManager).getById(1)!!
+//
+//    gamerDAO.create(gamer)
 
     val listaGamers = gamerDAO.getAll()
     listaGamers.forEach { println(it) }
