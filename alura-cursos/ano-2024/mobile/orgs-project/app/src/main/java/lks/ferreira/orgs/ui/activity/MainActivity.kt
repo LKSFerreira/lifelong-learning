@@ -2,26 +2,40 @@ package lks.ferreira.orgs.ui.activity
 
 import android.app.Activity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import lks.ferreira.orgs.R
+import lks.ferreira.orgs.model.Produto
 import lks.ferreira.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
+import java.math.BigDecimal
 
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*        setContentView(R.layout.activity_main)
-
-                val nome = findViewById<TextView>(R.id.nome)
-                nome.text = "Cesta de Frutas"
-
-                val descricao = findViewById<TextView>(R.id.descricao)
-                nome.text = "Banana, Laranja e Maçã"
-
-                val preco = findViewById<TextView>(R.id.preco)
-                nome.text = "R$ 10,00"*/
+        setContentView(R.layout.activity_main)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.adapter = ListaProdutosAdapter()
+
+        recyclerView.adapter = ListaProdutosAdapter(
+            context = this, produtos = listOf(
+                Produto(
+                    nome = "Notebook",
+                    descricao = "Notebook i5 8GB",
+                    valor = BigDecimal("2500.00")
+                ),
+                Produto(
+                    nome = "Smartphone",
+                    descricao = "Smartphone 4GB",
+                    valor = BigDecimal("1500.00")
+                ),
+                Produto(
+                    nome = "Tablet",
+                    descricao = "Tablet 2GB",
+                    valor = BigDecimal("800.00")
+                )
+            )
+        )
+//        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 }
