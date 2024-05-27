@@ -3,11 +3,9 @@ package lks.ferreira.orgs.ui.recyclerview.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import lks.ferreira.orgs.R
+import lks.ferreira.orgs.databinding.ProdutoItemBinding
 import lks.ferreira.orgs.model.Produto
 
 class ListaProdutosAdapter(
@@ -17,23 +15,23 @@ class ListaProdutosAdapter(
 
     private val produtos = produtos.toMutableList()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(private val binding: ProdutoItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun vincula(produto: Produto) {
-            val nome = itemView.findViewById<TextView>(R.id.produto_item_nome)
+            val nome = binding.produtoItemNome
             nome.text = produto.nome
 
-            val descricao = itemView.findViewById<TextView>(R.id.produto_item_descricao)
+            val descricao = binding.produtoItemDescricao
             descricao.text = produto.descricao
 
-            val preco = itemView.findViewById<TextView>(R.id.produto_item_preco)
-            preco.text = produto.valor.toPlainString()
+            val preco = binding.produtoItemPreco
+            preco.text = produto.preco.toPlainString()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(context)
-        val view = layoutInflater.inflate(R.layout.produto_item, parent, false)
-        return ViewHolder(view)
+        val binding = ProdutoItemBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

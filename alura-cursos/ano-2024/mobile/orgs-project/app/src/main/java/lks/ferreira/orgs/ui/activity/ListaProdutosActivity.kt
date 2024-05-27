@@ -4,22 +4,28 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import lks.ferreira.orgs.R
 import lks.ferreira.orgs.dao.ProdutosDao
+import lks.ferreira.orgs.databinding.ActivityListaProdutosBinding
 import lks.ferreira.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
 
-class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos) {
+class ListaProdutosActivity : AppCompatActivity() {
     private val dao = ProdutosDao()
-    private val adapter = ListaProdutosAdapter(
-        context = this, produtos = dao.buscaTodos()
-    )
+    private val adapter by lazy {
+        ListaProdutosAdapter(
+            context = this, produtos = dao.buscaTodos()
+        )
+    }
+    private val binding by lazy {
+        ActivityListaProdutosBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+
         setConfigRecyclerView()
         setConfigFab()
+
     }
 
     override fun onResume() {
@@ -28,7 +34,7 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
     }
 
     private fun setConfigFab() {
-        findViewById<FloatingActionButton>(R.id.activity_lista_produtos_floatingActionButton).setOnClickListener {
+        binding.activityListaProdutosFloatingActionButton.setOnClickListener {
             vaiParaFormularioProdutoActivity()
         }
     }
@@ -39,7 +45,7 @@ class ListaProdutosActivity : AppCompatActivity(R.layout.activity_lista_produtos
     }
 
     private fun setConfigRecyclerView() {
-        val recyclerView = findViewById<RecyclerView>(R.id.activity_lista_produtos_recycler_view)
+        val recyclerView = binding.activityListaProdutosRecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
     }
