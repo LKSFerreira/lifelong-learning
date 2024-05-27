@@ -14,24 +14,28 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setConfigSalvar()
+    }
+
+    private fun setConfigSalvar() {
         val botaoSalvar = findViewById<Button>(R.id.botao_salvar)
+        val dao = ProdutosDao()
 
         botaoSalvar.setOnClickListener {
-            val nomeProduto = findViewById<EditText>(R.id.nome).text.toString()
-            val descricaoProduto = findViewById<EditText>(R.id.descricao).text.toString()
-            val precoProdutoString = findViewById<EditText>(R.id.valor).text.toString()
-            val precoProduto =
-                if (precoProdutoString.isBlank()) BigDecimal.ZERO else precoProdutoString.toBigDecimal()
-
-            val novoProduto = Produto(nomeProduto, descricaoProduto, precoProduto)
-
-            Toast.makeText(this, "$novoProduto salvo com sucesso", Toast.LENGTH_LONG).show()
-
-            val dao = ProdutosDao()
+            val novoProduto = criaProduto()
             dao.adiciona(novoProduto)
-            dao.buscaTodos()
-
+            Toast.makeText(this, "Produto adicionado com sucesso", Toast.LENGTH_SHORT).show()
             finish()
         }
+    }
+
+    private fun criaProduto(): Produto {
+        val nomeProduto = findViewById<EditText>(R.id.activity_formulario_produto_nome).text.toString()
+        val descricaoProduto = findViewById<EditText>(R.id.activity_formulario_produto_descricao).text.toString()
+        val precoProdutoString = findViewById<EditText>(R.id.activity_formulario_produto_valor).text.toString()
+        val precoProduto =
+            if (precoProdutoString.isBlank()) BigDecimal.ZERO else precoProdutoString.toBigDecimal()
+
+        return Produto(nomeProduto, descricaoProduto, precoProduto)
     }
 }
