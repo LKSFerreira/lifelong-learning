@@ -1,10 +1,12 @@
 package lks.ferreira.orgs.ui.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import lks.ferreira.orgs.R
 import lks.ferreira.orgs.model.Produto
 import lks.ferreira.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
@@ -35,5 +37,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             )
         )
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        findViewById<FloatingActionButton>(R.id.floatingActionButton).setOnClickListener {
+            val intent = Intent(this, FormularioProdutoActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
