@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import lks.ferreira.orgs.R
+import lks.ferreira.orgs.dao.ProdutosDao
 import lks.ferreira.orgs.model.Produto
 import java.math.BigDecimal
 
@@ -17,7 +15,6 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
         super.onCreate(savedInstanceState)
 
         val botaoSalvar = findViewById<Button>(R.id.botao_salvar)
-
 
         botaoSalvar.setOnClickListener {
             val nomeProduto = findViewById<EditText>(R.id.nome).text.toString()
@@ -29,6 +26,12 @@ class FormularioProdutoActivity : AppCompatActivity(R.layout.activity_formulario
             val novoProduto = Produto(nomeProduto, descricaoProduto, precoProduto)
 
             Toast.makeText(this, "$novoProduto salvo com sucesso", Toast.LENGTH_LONG).show()
+
+            val dao = ProdutosDao()
+            dao.adiciona(novoProduto)
+            dao.buscaTodos()
+
+            finish()
         }
     }
 }

@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:autofillHints="Descrição do Produto"
             android:hint="@string/descricao_do_produto"
-            android:inputType="number"
+            android:inputType="textShortMessage"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="@+id/nome"
             app:layout_constraintStart_toStartOf="@+id/nome"
