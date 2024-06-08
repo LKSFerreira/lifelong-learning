@@ -1,14 +1,15 @@
 package br.com.alura.orgs.ui.recyclerview.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.alura.orgs.R
 import br.com.alura.orgs.databinding.ProdutoItemBinding
 import br.com.alura.orgs.model.Produto
+import java.math.BigDecimal
+import java.text.NumberFormat
+import java.util.Locale
 
 class ListaProdutosAdapter(
     private val context: Context,
@@ -26,7 +27,14 @@ class ListaProdutosAdapter(
             val descricao = binding.produtoItemDescricao
             descricao.text = produto.descricao
             val valor = binding.produtoItemValor
-            valor.text = produto.valor.toPlainString()
+            val valorEmMoedas = formataMoedaParaPTBR(produto.valor)
+            valor.text = valorEmMoedas
+        }
+
+        private fun formataMoedaParaPTBR(valor: BigDecimal): String {
+            val valorEmMoedas =
+                NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(valor)
+            return valorEmMoedas
         }
 
     }
@@ -44,6 +52,7 @@ class ListaProdutosAdapter(
 
     override fun getItemCount(): Int = produtos.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun atualiza(produtos: List<Produto>) {
         this.produtos.clear()
         this.produtos.addAll(produtos)
