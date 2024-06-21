@@ -17,7 +17,7 @@
             android:layout_height="200dp"
             android:contentDescription="@string/imagem_do_produto"
             android:scaleType="centerCrop"
-            android:src="@drawable/produto_1"
+            android:src="@drawable/imagem_padrao"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +36,8 @@
                 android:id="@+id/activity_formulario_produto_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nome" />
+                android:hint="@string/nome"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +55,9 @@
                 android:id="@+id/activity_formulario_produto_descricao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/descricao" />
+
+                android:hint="@string/descricao"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,7 +75,8 @@
                 android:id="@+id/activity_formulario_produto_valor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/valor" />
+                android:hint="@string/valor"
+                android:inputType="numberDecimal" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

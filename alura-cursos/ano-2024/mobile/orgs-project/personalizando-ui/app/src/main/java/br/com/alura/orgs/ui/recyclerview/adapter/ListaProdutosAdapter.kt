@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alura.orgs.databinding.ProdutoItemBinding
 import br.com.alura.orgs.model.Produto
+import coil.load
 import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.Locale
@@ -29,6 +30,8 @@ class ListaProdutosAdapter(
             val valor = binding.produtoItemValor
             val valorEmMoedas = formataMoedaParaPTBR(produto.valor)
             valor.text = valorEmMoedas
+
+            binding.produtoItemImagem.load("https://muraldoparana.com.br/wp-content/uploads/2021/08/Larajna.jpg")
         }
 
         private fun formataMoedaParaPTBR(valor: BigDecimal): String {
