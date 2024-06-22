@@ -1,6 +1,5 @@
 package br.com.alura.orgs.ui.recyclerview.adapter
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import br.com.alura.orgs.model.Produto
 import coil.load
 import java.math.BigDecimal
 import java.text.NumberFormat
-import java.util.Locale
+import java.util.*
 
 class ListaProdutosAdapter(
     private val context: Context,
@@ -28,16 +27,16 @@ class ListaProdutosAdapter(
             val descricao = binding.produtoItemDescricao
             descricao.text = produto.descricao
             val valor = binding.produtoItemValor
-            val valorEmMoedas = formataMoedaParaPTBR(produto.valor)
-            valor.text = valorEmMoedas
-
-            binding.produtoItemImagem.load("https://muraldoparana.com.br/wp-content/uploads/2021/08/Larajna.jpg")
+            val valorEmMoeda: String =
+                formataParaMoedaBrasileira(produto.valor)
+            valor.text = valorEmMoeda
+            binding.imageView.load(produto.imagem)
         }
 
-        private fun formataMoedaParaPTBR(valor: BigDecimal): String {
-            val valorEmMoedas =
-                NumberFormat.getCurrencyInstance(Locale("pt", "BR")).format(valor)
-            return valorEmMoedas
+        private fun formataParaMoedaBrasileira(valor: BigDecimal): String {
+            val formatador: NumberFormat = NumberFormat
+                .getCurrencyInstance(Locale("pt", "br"))
+            return formatador.format(valor)
         }
 
     }
@@ -55,7 +54,6 @@ class ListaProdutosAdapter(
 
     override fun getItemCount(): Int = produtos.size
 
-    @SuppressLint("NotifyDataSetChanged")
     fun atualiza(produtos: List<Produto>) {
         this.produtos.clear()
         this.produtos.addAll(produtos)

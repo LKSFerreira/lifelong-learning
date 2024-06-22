@@ -11,27 +11,25 @@
 
 
         <ImageView
-            android:id="@+id/formulario_imagem_imagemview"
+            android:id="@+id/formulario_imagem_imageview"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:contentDescription="@string/imagem_do_produto"
             android:scaleType="centerCrop"
-            android:src="@drawable/imagem_padrao"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/imagem_padrao" />
 
         <Button
             android:id="@+id/formulario_imagem_botao_carregar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/carregar"
+            android:text="Carregar"
             app:icon="@drawable/ic_action_refresh"
-            app:layout_constraintBottom_toBottomOf="@id/formulario_imagem_imagemview"
+            app:layout_constraintBottom_toBottomOf="@id/formulario_imagem_imageview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formulario_imagem_imagemview" />
-
+            app:layout_constraintTop_toBottomOf="@id/formulario_imagem_imageview" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/formulario_imagem_textinputlayout_url"
@@ -48,9 +46,10 @@
                 android:id="@+id/formulario_imagem_url"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/url_da_imagem"
+                android:hint="URL da imagem"
                 android:inputType="textUri" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
