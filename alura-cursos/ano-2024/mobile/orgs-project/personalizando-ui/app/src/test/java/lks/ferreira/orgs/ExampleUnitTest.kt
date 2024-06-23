@@ -1,4 +1,4 @@
-package br.com.alura.orgs
+package lks.ferreira.orgs
 
 import org.junit.Test
 
