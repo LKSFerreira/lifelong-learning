@@ -1,10 +1,8 @@
 package br.com.alura.orgs.ui.dialog
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
-
 import br.com.alura.orgs.extensions.tentaCarregarImagem
 import lks.ferreira.orgs.databinding.FormularioImagemBinding
 
