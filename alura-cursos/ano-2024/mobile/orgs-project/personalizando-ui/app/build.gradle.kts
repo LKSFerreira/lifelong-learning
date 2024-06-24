@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "lks.ferreira.orgs"
         minSdk = 22
-        targetSdk = 34
+        this.targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

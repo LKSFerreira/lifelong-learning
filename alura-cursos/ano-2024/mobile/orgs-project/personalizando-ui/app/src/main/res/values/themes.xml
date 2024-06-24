@@ -10,9 +10,16 @@
         <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
         <item name="android:fontFamily">@font/montserrat</item>
+    </style>
+
+    <!-- Criação de estilo baseado no estilo original do Orgs -->
+    <style name="Theme.Orgs.NoActionBar" parent="Theme.Orgs">
+        <!-- Remoção da App bar para o estilo -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

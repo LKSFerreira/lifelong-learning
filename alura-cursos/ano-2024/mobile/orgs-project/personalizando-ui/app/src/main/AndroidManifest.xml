@@ -11,6 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Orgs">
         <activity android:name="br.com.alura.orgs.ui.activity.FormularioProdutoActivity" />
+        <!-- personalização de tema na Activity -->
+        <activity
+            android:name="br.com.alura.orgs.ui.activity.DetalhesProdutoActivity"
+            android:theme="@style/Theme.Orgs.NoActionBar" />
         <activity
             android:name="br.com.alura.orgs.ui.activity.ListaProdutosActivity"
             android:exported="true">
