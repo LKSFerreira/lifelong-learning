@@ -56,4 +56,7 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.gif)
 
+    implementation(libs.androidx.room.runtime.android)
+    annotationProcessor(libs.androidx.room.compiler)
+
 }
