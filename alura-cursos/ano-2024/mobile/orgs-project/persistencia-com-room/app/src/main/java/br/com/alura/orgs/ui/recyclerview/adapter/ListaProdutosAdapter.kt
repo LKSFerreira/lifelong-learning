@@ -13,7 +13,7 @@ import lks.ferreira.orgs.databinding.ProdutoItemBinding
 
 class ListaProdutosAdapter(
     private val context: Context,
-    produtos: List<Produto>,
+    produtos: List<Produto> = emptyList(),
     var quandoClicaNoItem: (produto: Produto) -> Unit = {}
 ) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
 
