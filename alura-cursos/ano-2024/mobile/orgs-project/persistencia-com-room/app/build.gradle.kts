@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-parcelize")
+    id("kotlin-kapt")
 }
 
 android {
@@ -56,7 +57,7 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.coil.gif)
 
-    implementation(libs.androidx.room.runtime.android)
-    annotationProcessor(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
 
 }
