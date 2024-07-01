@@ -13,8 +13,7 @@
         <activity android:name="br.com.alura.orgs.ui.activity.FormularioProdutoActivity" />
         <!-- personalização de tema na Activity -->
         <activity
-            android:name="br.com.alura.orgs.ui.activity.DetalhesProdutoActivity"
-            android:theme="@style/Theme.Orgs.NoActionBar" />
+            android:name="br.com.alura.orgs.ui.activity.DetalhesProdutoActivity"/>
         <activity
             android:name="br.com.alura.orgs.ui.activity.ListaProdutosActivity"
             android:exported="true">
