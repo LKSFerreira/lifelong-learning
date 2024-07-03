@@ -2,10 +2,13 @@ package br.com.alura.orgs.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
+import lks.ferreira.orgs.R
 import lks.ferreira.orgs.databinding.ActivityListaProdutosActivityBinding
 
 class ListaProdutosActivity : AppCompatActivity() {
@@ -25,6 +28,27 @@ class ListaProdutosActivity : AppCompatActivity() {
         configuraFab()
         quandoClicarEmEditar()
         quandoClicarEmRemover()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_lista_produtos, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val produtosOrdenado = when (item.itemId) {
+            R.id.menu_lista_produtos_ordenar_nome_asc -> produtoDao.buscaOrdenadoPorNomeAsc()
+            R.id.menu_lista_produtos_ordenar_nome_desc -> produtoDao.buscaOrdenadoPorNomeDesc()
+            R.id.menu_lista_produtos_ordenar_valor_asc -> produtoDao.buscaOrdenadoPorValorAsc()
+            R.id.menu_lista_produtos_ordenar_valor_desc -> produtoDao.buscaOrdenadoPorValorDesc()
+            R.id.menu_lista_produtos_ordenar_id -> produtoDao.buscaTodos()
+            else -> null
+        }
+
+        produtosOrdenado?.let {
+            adapter.atualiza(it)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun quandoClicarEmRemover() {

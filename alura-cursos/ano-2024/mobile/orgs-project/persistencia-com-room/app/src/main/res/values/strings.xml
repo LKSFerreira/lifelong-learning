@@ -3,4 +3,10 @@
     <string name="imagem_do_produto">Imagem do produto</string>
     <string name="editar">Editar</string>
     <string name="remover">Remover</string>
+    <string name="ordenar">Ordenar</string>
+    <string name="nome_desc">Nome Desc</string>
+    <string name="nome_asc">Nome Asc</string>
+    <string name="valor_desc">Valor Desc</string>
+    <string name="valor_asc">Valor Asc</string>
+    <string name="por_insercao">Por inserção</string>
 </resources>

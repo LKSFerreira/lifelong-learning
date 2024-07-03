@@ -25,4 +25,17 @@ interface ProdutoDao {
 
     @Update
     fun altera(vararg produto: Produto)
+
+    @Query("SELECT * FROM Produto ORDER BY nome ASC")
+    fun buscaOrdenadoPorNomeAsc(): List<Produto>
+
+    @Query("SELECT * FROM Produto ORDER BY nome DESC")
+    fun buscaOrdenadoPorNomeDesc(): List<Produto>
+
+    @Query("SELECT * FROM Produto ORDER BY valor ASC")
+    fun buscaOrdenadoPorValorAsc(): List<Produto>
+
+    @Query("SELECT * FROM Produto ORDER BY valor DESC")
+    fun buscaOrdenadoPorValorDesc(): List<Produto>
+
 }
