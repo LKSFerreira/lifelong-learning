@@ -1,5 +1,6 @@
 package br.com.alura.orgs.ui.activity
 
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.orgs.database.AppDatabase
@@ -15,18 +16,38 @@ class FormularioProdutoActivity : AppCompatActivity() {
         ActivityFormularioProdutoBinding.inflate(layoutInflater)
     }
     private var url: String? = null
+    private var produtoCarregado: Produto? = null
+    private var idProduto = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         title = "Cadastrar produto"
         configuraBotaoSalvar()
+
         binding.activityFormularioProdutoImagem.setOnClickListener {
             FormularioImagemDialog(this)
                 .mostra(url) { imagem ->
                     url = imagem
                     binding.activityFormularioProdutoImagem.tentaCarregarImagem(url)
                 }
+        }
+
+        produtoCarregado = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(CHAVE_PRODUTO, Produto::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            intent.getParcelableExtra(CHAVE_PRODUTO)
+        }
+
+        produtoCarregado?.let {
+            title = "Editando produto"
+            idProduto = it.id
+            url = it.imagem
+            binding.activityFormularioProdutoImagem.tentaCarregarImagem(it.imagem)
+            binding.activityFormularioProdutoNome.setText(it.nome)
+            binding.activityFormularioProdutoDescricao.setText(it.descricao)
+            binding.activityFormularioProdutoValor.setText(it.valor.toPlainString())
         }
     }
 
@@ -35,9 +56,11 @@ class FormularioProdutoActivity : AppCompatActivity() {
         val db = AppDatabase.instance(this)
         botaoSalvar.setOnClickListener {
             val produtoNovo = criaProduto()
-            db.produtoDao().salva(
-                produtoNovo
-            )
+            if (idProduto > 0) {
+                db.produtoDao().altera(produtoNovo)
+            } else {
+                db.produtoDao().salva(produtoNovo)
+            }
             finish()
         }
     }
@@ -56,6 +79,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
         }
 
         return Produto(
+            id = idProduto,
             nome = nome,
             descricao = descricao,
             valor = valor,
@@ -63,4 +87,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
         )
     }
 
+    companion object {
+        const val CHAVE_PRODUTO = "produto"
+    }
 }
