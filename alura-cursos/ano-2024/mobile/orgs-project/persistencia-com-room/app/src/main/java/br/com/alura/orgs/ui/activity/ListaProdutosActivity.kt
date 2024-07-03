@@ -44,14 +44,12 @@ class ListaProdutosActivity : AppCompatActivity() {
         val recyclerView = binding.activityListaProdutosRecyclerView
         recyclerView.adapter = adapter
 
-        // implementação do listener para abrir a Activity de detalhes do produto
-        // com o produto clicado
         adapter.quandoClicaNoItem = {
             val intent = Intent(
                 this, DetalhesProdutoActivity::class.java
             ).apply {
                 // envio do produto por meio do extra
-                putExtra(CHAVE_PRODUTO, it)
+                putExtra(CHAVE_PRODUTO_ID, it.id)
             }
             startActivity(intent)
         }

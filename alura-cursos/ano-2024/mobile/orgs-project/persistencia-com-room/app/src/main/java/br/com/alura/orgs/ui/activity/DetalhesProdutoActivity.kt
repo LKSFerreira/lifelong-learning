@@ -15,7 +15,7 @@ import lks.ferreira.orgs.databinding.ActivityDetalhesProdutoBinding
 
 class DetalhesProdutoActivity : AppCompatActivity() {
 
-    private var produtoId: Long? = null
+    private var produtoId: Long = 0
     private var produto: Produto? = null
     private val binding by lazy {
         ActivityDetalhesProdutoBinding.inflate(layoutInflater)
@@ -32,9 +32,11 @@ class DetalhesProdutoActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         tentaCarregarProduto()
-        produtoId?.let {
-            produto = produtoDao.buscaPorId(it)
-        }
+        buscaProduto()
+    }
+
+    private fun buscaProduto() {
+        produto = produtoDao.buscaPorId(produtoId)
         produto?.let {
             preencheCampos(it)
         } ?: finish()
@@ -55,7 +57,7 @@ class DetalhesProdutoActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_detalhes_produto_editar -> {
                 Intent(this, FormularioProdutoActivity::class.java).apply {
-                    putExtra(CHAVE_PRODUTO, produto)
+                    putExtra(CHAVE_PRODUTO_ID, produtoId)
                     startActivity(this)
                 }
             }
@@ -71,16 +73,7 @@ class DetalhesProdutoActivity : AppCompatActivity() {
     }
 
     private fun tentaCarregarProduto() {
-        val produtoCarregado: Produto? =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                intent.getParcelableExtra(CHAVE_PRODUTO, Produto::class.java)
-            } else {
-                @Suppress("DEPRECATION") intent.getParcelableExtra(CHAVE_PRODUTO)
-            }
-
-        produtoCarregado?.let {
-            produtoId = it.id
-        } ?: finish()
+        produtoId = intent.getLongExtra(CHAVE_PRODUTO_ID, 0)
     }
 
     private fun preencheCampos(produtoCarregado: Produto) {
