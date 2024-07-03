@@ -14,18 +14,38 @@ class ListaProdutosActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityListaProdutosActivityBinding.inflate(layoutInflater)
     }
+    private val produtoDao by lazy {
+        AppDatabase.instance(this).produtoDao()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         configuraRecyclerView()
         configuraFab()
+        quandoClicarEmEditar()
+        quandoClicarEmRemover()
+    }
+
+    private fun quandoClicarEmRemover() {
+        adapter.quandoClicaEmRemover = {
+            produtoDao.remove(it)
+            adapter.atualiza(produtoDao.buscaTodos())
+        }
+    }
+
+    private fun quandoClicarEmEditar() {
+        adapter.quandoClicaEmEditar = {
+            val intent = Intent(this, FormularioProdutoActivity::class.java)
+            intent.putExtra(CHAVE_PRODUTO_ID, it.id)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        val db = AppDatabase.instance(this)
-        adapter.atualiza(db.produtoDao().buscaTodos())
+        adapter.atualiza(produtoDao.buscaTodos())
+
     }
 
     private fun configuraFab() {
