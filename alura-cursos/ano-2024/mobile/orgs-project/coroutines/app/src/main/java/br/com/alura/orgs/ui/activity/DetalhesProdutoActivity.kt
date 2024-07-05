@@ -10,6 +10,12 @@ import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.extensions.formataParaMoedaBrasileira
 import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import lks.ferreira.orgs.R
 import lks.ferreira.orgs.databinding.ActivityDetalhesProdutoBinding
 
@@ -23,6 +29,7 @@ class DetalhesProdutoActivity : AppCompatActivity() {
     private val produtoDao by lazy {
         AppDatabase.instance(this).produtoDao()
     }
+    private val scope = CoroutineScope(IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,15 +38,20 @@ class DetalhesProdutoActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        tentaCarregarProduto()
         buscaProduto()
     }
 
     private fun buscaProduto() {
-        produto = produtoDao.buscaPorId(produtoId)
-        produto?.let {
-            preencheCampos(it)
-        } ?: finish()
+        scope.launch {
+            tentaCarregarProduto()
+            produto = produtoDao.buscaPorId(produtoId)
+
+            withContext(Main) {
+                produto?.let {
+                    preencheCampos(it)
+                } ?: finish()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -52,8 +64,6 @@ class DetalhesProdutoActivity : AppCompatActivity() {
             return super.onOptionsItemSelected(item)
         }
 
-        val db = AppDatabase.instance(this)
-
         when (item.itemId) {
             R.id.menu_detalhes_produto_editar -> {
                 Intent(this, FormularioProdutoActivity::class.java).apply {
@@ -64,8 +74,10 @@ class DetalhesProdutoActivity : AppCompatActivity() {
 
             R.id.menu_detalhes_produto_remover -> {
                 produto?.let {
-                    db.produtoDao().remove(it)
-                    finish()
+                    scope.launch {
+                        produtoDao.remove(it)
+                        finish()
+                    }
                 }
             }
         }
@@ -81,7 +93,8 @@ class DetalhesProdutoActivity : AppCompatActivity() {
             activityDetalhesProdutoImagem.tentaCarregarImagem(produtoCarregado.imagem)
             activityDetalhesProdutoNome.text = produtoCarregado.nome
             activityDetalhesProdutoDescricao.text = produtoCarregado.descricao
-            activityDetalhesProdutoValor.text = produtoCarregado.valor.formataParaMoedaBrasileira()
+            activityDetalhesProdutoValor.text =
+                produtoCarregado.valor.formataParaMoedaBrasileira()
         }
     }
 }

@@ -6,6 +6,12 @@ import br.com.alura.orgs.database.AppDatabase
 import br.com.alura.orgs.extensions.tentaCarregarImagem
 import br.com.alura.orgs.model.Produto
 import br.com.alura.orgs.ui.dialog.FormularioImagemDialog
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers.Main
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import lks.ferreira.orgs.databinding.ActivityFormularioProdutoBinding
 import java.math.BigDecimal
 
@@ -19,6 +25,7 @@ class FormularioProdutoActivity : AppCompatActivity() {
     private val produtoDao by lazy {
         AppDatabase.instance(this).produtoDao()
     }
+    private val scope = CoroutineScope(IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,14 +44,23 @@ class FormularioProdutoActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        tentaCarregarProduto()
+        buscaProdutoId()
+        tentaBuscarProduto()
+    }
+
+    private fun tentaBuscarProduto() {
         if (produtoId != 0L) {
-            preencheCampos(produtoDao.buscaPorId(produtoId))
+            scope.launch {
+                produtoDao.buscaPorId(produtoId).let {
+                    withContext(Main) {
+                        preencheCampos(it)
+                    }
+                }
+            }
         }
     }
 
-
-    private fun tentaCarregarProduto() {
+    private fun buscaProdutoId() {
         produtoId = intent.getLongExtra(CHAVE_PRODUTO_ID, 0L)
     }
 
@@ -60,9 +76,12 @@ class FormularioProdutoActivity : AppCompatActivity() {
     private fun configuraBotaoSalvar() {
         val botaoSalvar = binding.activityFormularioProdutoBotaoSalvar
         botaoSalvar.setOnClickListener {
-            val produtoNovo = criaProduto()
-            produtoDao.salva(produtoNovo)
-            finish()
+            scope.launch {
+                withContext(IO) {
+                    produtoDao.salva(criaProduto())
+                    finish()
+                }
+            }
         }
     }
 

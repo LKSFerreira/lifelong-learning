@@ -23,7 +23,7 @@ abstract class AppDatabase : RoomDatabase() {
             if (::db.isInitialized) return db
             return Room.databaseBuilder(
                 context, AppDatabase::class.java, "orgs.db"
-            ).allowMainThreadQueries().build().also { db = it}
+            ).build().also { db = it}
         }
     }
 }
