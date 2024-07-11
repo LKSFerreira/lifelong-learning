@@ -4,15 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.alura.orgs.database.AppDatabase
+import br.com.alura.orgs.model.Produto
 import br.com.alura.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import lks.ferreira.orgs.R
 import lks.ferreira.orgs.databinding.ActivityListaProdutosActivityBinding
@@ -76,12 +74,15 @@ class ListaProdutosActivity : AppCompatActivity() {
         super.onResume()
         val scope = MainScope()
         scope.launch {
-            val produtos = withContext(Dispatchers.IO) {
-                produtoDao.buscaTodos()
-            }
+            val produtos = buscaTodosProdutos()
             adapter.atualiza(produtos)
         }
     }
+
+    private suspend fun buscaTodosProdutos() = withContext(Dispatchers.IO) {
+        produtoDao.buscaTodos()
+    }
+
 
     private fun configuraFab() {
         val fab = binding.activityListaProdutosFab
