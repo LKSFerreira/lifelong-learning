@@ -12,30 +12,30 @@ import br.com.alura.orgs.model.Produto
 interface ProdutoDao {
 
     @Query("SELECT * FROM Produto")
-    fun buscaTodos(): List<Produto>
+    suspend fun buscaTodos(): List<Produto>
 
     @Query("SELECT * FROM Produto WHERE id = :id")
-    fun buscaPorId(id: Long): Produto
+    suspend fun buscaPorId(id: Long): Produto
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun salva(vararg produto: Produto)
+    suspend fun salva(vararg produto: Produto)
 
     @Delete
-    fun remove(vararg produto: Produto)
+    suspend fun remove(vararg produto: Produto)
 
     @Update
-    fun altera(vararg produto: Produto)
+    suspend fun altera(vararg produto: Produto)
 
     @Query("SELECT * FROM Produto ORDER BY nome ASC")
-    fun buscaOrdenadoPorNomeAsc(): List<Produto>
+    suspend fun buscaOrdenadoPorNomeAsc(): List<Produto>
 
     @Query("SELECT * FROM Produto ORDER BY nome DESC")
-    fun buscaOrdenadoPorNomeDesc(): List<Produto>
+    suspend fun buscaOrdenadoPorNomeDesc(): List<Produto>
 
     @Query("SELECT * FROM Produto ORDER BY valor ASC")
-    fun buscaOrdenadoPorValorAsc(): List<Produto>
+    suspend fun buscaOrdenadoPorValorAsc(): List<Produto>
 
     @Query("SELECT * FROM Produto ORDER BY valor DESC")
-    fun buscaOrdenadoPorValorDesc(): List<Produto>
+    suspend fun buscaOrdenadoPorValorDesc(): List<Produto>
 
 }

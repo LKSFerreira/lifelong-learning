@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import br.com.alura.orgs.database.AppDatabase
-import br.com.alura.orgs.model.Produto
 import br.com.alura.orgs.ui.recyclerview.adapter.ListaProdutosAdapter
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import lks.ferreira.orgs.R
 import lks.ferreira.orgs.databinding.ActivityListaProdutosActivityBinding
 
@@ -40,25 +37,28 @@ class ListaProdutosActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val produtosOrdenado = when (item.itemId) {
-            R.id.menu_lista_produtos_ordenar_nome_asc -> produtoDao.buscaOrdenadoPorNomeAsc()
-            R.id.menu_lista_produtos_ordenar_nome_desc -> produtoDao.buscaOrdenadoPorNomeDesc()
-            R.id.menu_lista_produtos_ordenar_valor_asc -> produtoDao.buscaOrdenadoPorValorAsc()
-            R.id.menu_lista_produtos_ordenar_valor_desc -> produtoDao.buscaOrdenadoPorValorDesc()
-            R.id.menu_lista_produtos_ordenar_id -> produtoDao.buscaTodos()
-            else -> null
-        }
-
-        produtosOrdenado?.let {
-            adapter.atualiza(it)
+        lifecycleScope.launch {
+            val produtosOrdenado = when (item.itemId) {
+                R.id.menu_lista_produtos_ordenar_nome_asc -> produtoDao.buscaOrdenadoPorNomeAsc()
+                R.id.menu_lista_produtos_ordenar_nome_desc -> produtoDao.buscaOrdenadoPorNomeDesc()
+                R.id.menu_lista_produtos_ordenar_valor_asc -> produtoDao.buscaOrdenadoPorValorAsc()
+                R.id.menu_lista_produtos_ordenar_valor_desc -> produtoDao.buscaOrdenadoPorValorDesc()
+                R.id.menu_lista_produtos_ordenar_id -> produtoDao.buscaTodos()
+                else -> null
+            }
+            produtosOrdenado?.let {
+                adapter.atualiza(it)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
     private fun quandoClicarEmRemover() {
         adapter.quandoClicaEmRemover = {
-            produtoDao.remove(it)
-            adapter.atualiza(produtoDao.buscaTodos())
+            lifecycleScope.launch {
+                produtoDao.remove(it)
+                adapter.atualiza(produtoDao.buscaTodos())
+            }
         }
     }
 
@@ -72,15 +72,11 @@ class ListaProdutosActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val scope = MainScope()
-        scope.launch {
-            val produtos = buscaTodosProdutos()
+
+        lifecycleScope.launch {
+            val produtos = produtoDao.buscaTodos()
             adapter.atualiza(produtos)
         }
-    }
-
-    private suspend fun buscaTodosProdutos() = withContext(Dispatchers.IO) {
-        produtoDao.buscaTodos()
     }
 
 
