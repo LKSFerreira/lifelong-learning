@@ -29,6 +29,12 @@ class ListaProdutosActivity : AppCompatActivity() {
         configuraFab()
         quandoClicarEmEditar()
         quandoClicarEmRemover()
+
+        lifecycleScope.launch {
+            produtoDao.buscaTodos().collect {
+                adapter.atualiza(it)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -69,16 +75,6 @@ class ListaProdutosActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-
-        lifecycleScope.launch {
-            val produtos = produtoDao.buscaTodos()
-            adapter.atualiza(produtos)
-        }
-    }
-
 
     private fun configuraFab() {
         val fab = binding.activityListaProdutosFab
