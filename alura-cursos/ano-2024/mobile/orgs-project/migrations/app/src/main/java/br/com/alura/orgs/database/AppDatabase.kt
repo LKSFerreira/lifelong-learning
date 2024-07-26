@@ -12,12 +12,7 @@ import br.com.alura.orgs.model.Produto
 import br.com.alura.orgs.model.Usuario
 
 @Database(
-    entities = [
-        Produto::class,
-        Usuario::class
-    ],
-    version = 1,
-    exportSchema = true
+    entities = [Produto::class, Usuario::class], version = 2, exportSchema = true
 )
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -30,10 +25,8 @@ abstract class AppDatabase : RoomDatabase() {
         private var db: AppDatabase? = null
         fun instancia(context: Context): AppDatabase {
             return db ?: Room.databaseBuilder(
-                context,
-                AppDatabase::class.java,
-                "orgs.db"
-            ).build().also {
+                context, AppDatabase::class.java, "orgs.db"
+            ).addMigrations(MIGRATION_1_2).build().also {
                 db = it
             }
         }
