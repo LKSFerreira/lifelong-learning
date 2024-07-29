@@ -15,4 +15,7 @@
     <color name="colorSecondary">#43a047</color>
     <color name="colorSecondaryVariant">#76d275</color>
     <color name="colorOnSecondary">#ffffff</color>
+
+    <color name="red_200">#FFCF6679</color>
+    <color name="red_500">#FFD32F2F</color>
 </resources>

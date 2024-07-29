@@ -57,6 +57,10 @@ class ListaProdutosActivity : UsuarioBaseActivity() {
                     logoutUsuario()
                 }
             }
+
+            R.id.menu_lista_produto_perfil_usuario -> {
+                vaiPara(PerfilUsuarioActivity::class.java)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
