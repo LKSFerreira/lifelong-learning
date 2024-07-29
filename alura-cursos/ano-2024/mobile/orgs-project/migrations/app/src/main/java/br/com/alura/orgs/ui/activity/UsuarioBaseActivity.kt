@@ -21,7 +21,7 @@ abstract class UsuarioBaseActivity : AppCompatActivity() {
     private val usuarioDao by lazy {
         AppDatabase.instancia(this).usuarioDao()
     }
-    private var _usuario: MutableStateFlow<Usuario?> = MutableStateFlow(null)
+    private val _usuario: MutableStateFlow<Usuario?> = MutableStateFlow(null)
     protected val usuario: StateFlow<Usuario?> = _usuario
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,6 @@ abstract class UsuarioBaseActivity : AppCompatActivity() {
 
     private suspend fun buscaUsuario(usuarioId: String) {
         _usuario.value = usuarioDao.buscaPorId(usuarioId).firstOrNull()
-
     }
 
     protected suspend fun logoutUsuario() {
