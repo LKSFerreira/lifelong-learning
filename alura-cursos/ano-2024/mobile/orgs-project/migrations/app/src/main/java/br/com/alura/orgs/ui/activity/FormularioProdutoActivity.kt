@@ -48,13 +48,13 @@ class FormularioProdutoActivity : UsuarioBaseActivity() {
         }
     }
 
-    private fun tentaCarregarProduto() {
-        produtoId = intent.getLongExtra(CHAVE_PRODUTO_ID, 0L)
-    }
-
     override fun onResume() {
         super.onResume()
         tentaBuscarProduto()
+    }
+
+    private fun tentaCarregarProduto() {
+        produtoId = intent.getLongExtra(CHAVE_PRODUTO_ID, 0L)
     }
 
     private fun tentaBuscarProduto() {
