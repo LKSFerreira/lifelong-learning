@@ -5,11 +5,16 @@
     <item
         android:id="@+id/menu_lista_produto_perfil_usuario"
         android:icon="@drawable/ic_action_perfil"
-        android:title="Perfil"
+        android:title="@string/perfil"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_lista_produto_sair_do_app"
         android:icon="@drawable/ic_action_sair"
-        android:title="Sair do App"
+        android:title="@string/sair_do_app"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_lista_produto_todos_produtos"
+        android:title="@string/todos_os_produtos"
+        app:showAsAction="never" />
 </menu>

@@ -3,4 +3,7 @@
     <string name="campo_usuario">Usuário: %1$s</string>
     <string name="campo_nome">Nome: %1$s</string>
     <string name="sair">Sair</string>
+    <string name="perfil">Perfil</string>
+    <string name="sair_do_app">Sair do App</string>
+    <string name="todos_os_produtos">Todos os produtos</string>
 </resources>
