@@ -32,7 +32,8 @@ function updateFireIntensityPerPixel(currentPixelIndex) {
     if (belowPixelIndex >= fireWidth * fireHeight) {
         return;
     }
-    const decay = Math.floor(Math.random() * 3);
+    // Quanto maior o valor de multiplicacao do valor aleatório, maior a intensidade do fogo
+    const decay = Math.floor(Math.random() * 2.7);
     const belowPixelFireIntensity = firePixelsArray[belowPixelIndex];
     const newFireIntensity = belowPixelFireIntensity - decay >= 0 ? belowPixelFireIntensity - decay : 0;
     // Se você remover o decay o fogo fica na vertical, se subtrair ou somar o fogo da um efeito de vento
