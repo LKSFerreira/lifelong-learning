@@ -19,6 +19,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+.idea/
+.vscode/ 
 .vs/
 Generated\ Files/
 [Tt]est[Rr]esult*/
