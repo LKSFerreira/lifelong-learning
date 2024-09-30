@@ -7,17 +7,17 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class RetrofitInicializador {
 
-//    private val logging = HttpLoggingInterceptor().apply {
-//        level = HttpLoggingInterceptor.Level.BODY
-//    }
-//
-//    private val client = okhttp3.OkHttpClient.Builder()
-//        .addInterceptor(logging)
-//        .build()
+    private val logging = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    private val client = okhttp3.OkHttpClient.Builder()
+        .addInterceptor(logging)
+        .build()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl("http://192.168.15.157:8080/")
-        //.client(client)
+        .client(client)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()
 
