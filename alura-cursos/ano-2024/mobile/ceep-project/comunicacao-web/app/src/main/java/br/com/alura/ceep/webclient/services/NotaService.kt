@@ -5,6 +5,10 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface NotaService {
+    @Deprecated("Utilize o método getAll")
     @GET("notas")
     fun buscaTodos(): Call<List<NotaResponse>>
+
+    @GET("notas")
+    suspend fun getAll(): List<NotaResponse>
 }
