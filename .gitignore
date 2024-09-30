@@ -1,3 +1,25 @@
+# Ignore arquivos e pastas do Android Studio
+*.iml
+/.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+/.DS_Store
+
+# Ignore pastas de build em todas as subpastas
+**/build/
+**/captures/
+**/.externalNativeBuild/
+**/.cxx/
+**/gradle/
+
+# Ignore arquivos locais
+local.properties
+
 *.rsuser
 *.suo
 *.user
