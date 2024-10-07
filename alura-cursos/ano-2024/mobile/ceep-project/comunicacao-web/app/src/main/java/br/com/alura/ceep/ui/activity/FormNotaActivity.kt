@@ -26,7 +26,7 @@ class FormNotaActivity : AppCompatActivity() {
     private val dao by lazy {
         AppDatabase.instancia(this).notaDao()
     }
-    private var notaId: Long = 0L
+    private var notaId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,18 +59,20 @@ class FormNotaActivity : AppCompatActivity() {
     }
 
     private suspend fun tentaBuscarNota() {
-        dao.buscaPorId(notaId)
-            .filterNotNull()
-            .collect { notaEncontrada ->
-                notaId = notaEncontrada.id
-                imagem.value = notaEncontrada.imagem
-                binding.activityFormNotaTitulo.setText(notaEncontrada.titulo)
-                binding.activityFormNotaDescricao.setText(notaEncontrada.descricao)
-            }
+        notaId?.let {
+            dao.buscaPorId(it)
+                .filterNotNull()
+                .collect { notaEncontrada ->
+                    notaId = notaEncontrada.id
+                    imagem.value = notaEncontrada.imagem
+                    binding.activityFormNotaTitulo.setText(notaEncontrada.titulo)
+                    binding.activityFormNotaDescricao.setText(notaEncontrada.descricao)
+                }
+        }
     }
 
     private fun tentaCarregarIdDaNota() {
-        notaId = intent.getLongExtra(NOTA_ID, 0L)
+        notaId = intent.getStringExtra(NOTA_ID)
     }
 
     private fun configuraImagem() {
@@ -94,6 +96,7 @@ class FormNotaActivity : AppCompatActivity() {
             R.id.form_nota_menu_salvar -> {
                 salva()
             }
+
             R.id.form_nota_menu_remover -> {
                 remove()
             }
@@ -103,9 +106,12 @@ class FormNotaActivity : AppCompatActivity() {
 
     private fun remove() {
         lifecycleScope.launch {
-            dao.remove(notaId)
-            finish()
+            notaId?.let {
+                dao.remove(it)
+            }
         }
+
+        finish()
     }
 
     private fun salva() {
@@ -119,8 +125,14 @@ class FormNotaActivity : AppCompatActivity() {
     private fun criaNota(): Nota {
         val titulo = binding.activityFormNotaTitulo.text.toString()
         val descricao = binding.activityFormNotaDescricao.text.toString()
-        return Nota(
-            id = notaId,
+        return notaId?.let {
+            Nota(
+                id = it,
+                titulo = titulo,
+                descricao = descricao,
+                imagem = imagem.value
+            )
+        } ?: Nota(
             titulo = titulo,
             descricao = descricao,
             imagem = imagem.value
