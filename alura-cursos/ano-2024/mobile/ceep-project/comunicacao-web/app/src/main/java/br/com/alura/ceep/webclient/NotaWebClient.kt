@@ -22,7 +22,7 @@ class NotaWebClient {
         }
     }
 
-    suspend fun salva(nota: Nota) {
+    suspend fun salva(nota: Nota): Boolean {
         try {
             val resposta = notaService.salva(nota.id, NotaRequest(nota.titulo, nota.descricao, nota.imagem))
             val mensagem = if (resposta.isSuccessful) {
@@ -30,10 +30,11 @@ class NotaWebClient {
             } else {
                 "Falha ao tentar salvar a nota"
             }
-
             Log.i(TAG, mensagem)
+            return resposta.isSuccessful
         } catch (e: Exception) {
             Log.e(TAG, "Falho ao tentar salvar: ${e.message}", e)
         }
+        return false
     }
 }
