@@ -23,12 +23,15 @@ class NotaRepository(
         }
     }
 
-    fun buscaPorId(it: String): Flow<Nota> {
-        return dao.buscaPorId(it)
+    fun buscaPorId(id: String): Flow<Nota> {
+        return dao.buscaPorId(id)
     }
 
-    suspend fun remove(it: String) {
-        dao.remove(it)
+    suspend fun remove(id: String) {
+        dao.desativa(id)
+        if (webClient.remove(id)) {
+            dao.remove(id)
+        }
     }
 
     suspend fun salva(nota: Nota) {
@@ -41,6 +44,13 @@ class NotaRepository(
     }
 
     suspend fun sincroniza() {
+        dao.buscaDesativadas().first().let { notasDesativadas ->
+            notasDesativadas.forEach {
+                dao.remove(it.id)
+                webClient.remove(it.id)
+            }
+        }
+
         dao.buscaNaoSincronizadas().first().let { notasNaoSincronizadas ->
             notasNaoSincronizadas.forEach {
                 salva(it)
