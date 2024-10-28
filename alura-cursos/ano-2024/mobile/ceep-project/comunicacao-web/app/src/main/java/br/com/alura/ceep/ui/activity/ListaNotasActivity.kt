@@ -52,7 +52,7 @@ class ListaNotasActivity : AppCompatActivity() {
         binding.activityListaNotasSwipe.setOnRefreshListener {
             lifecycleScope.launch {
                 sincroniza()
-                binding.activityListaNotasSwipe.isRefreshing = false
+                binding.activityListaNotasSwipe.isRefreshing = fal se
             }
         }
     }
