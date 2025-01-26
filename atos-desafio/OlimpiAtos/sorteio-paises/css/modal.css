@@ -12,13 +12,14 @@
   transition: all 0.3s;
 
 }
+
 .modal-window:target {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
 
-.modal-window > div {
+.modal-window>div {
   width: 1400px;
   height: 700px;
   position: absolute;
@@ -29,9 +30,18 @@
   background: rgb(41, 38, 38);
 }
 
+.modal-window>div>div {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.35rem;
+
+}
+
 .modal-window header {
   font-weight: bold;
 }
+
 .modal-window h1 {
   font-size: 150%;
   margin: 0 0 15px;
@@ -40,7 +50,8 @@
 .modal-close {
   color: #ffffff;
   line-height: 50px;
-  font-size: 80%;
+  font-size: 2rem;
+  font-weight: bold;
   position: absolute;
   right: 0;
   text-align: center;
@@ -50,10 +61,12 @@
 }
 
 .modal-close:hover {
-  color: black;
+  color: rgb(190, 30, 30);
+  /* peso da fotnte */
+  font-weight: bold;
 }
 
-.modal-window > div {
+.modal-window>div {
   border-radius: 1rem;
 }
 
@@ -61,23 +74,16 @@
   margin-bottom: 15px;
 }
 
+@keyframes bandeira-animacao {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
 .bandeira {
-  width: 100px; /* ou o tamanho que você desejar */
-  height: 50px; /* ou o tamanho que você desejar */
-  position: absolute;
-  animation: deslizar 1s linear forwards; /* ajuste a duração conforme necessário */
-}
-
-@keyframes deslizar {
-  from {
-    right: 0px; /* começa fora do modal */
-  }
-  to {
-    right: 1320px; /* termina na posição final dentro do modal */
-  }
-}
-
-.grupo-bandeiras {
-  display: flex;
-  flex-wrap: wrap;
+  width: 120px;
+  height: 80px;
+  animation-name: bandeira-animacao;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: backwards;
 }
