@@ -22,41 +22,37 @@ ancorButton.forEach((elemento, index) => {
     modal.classList.add("modal-window");
     modal.innerHTML = `
       <div>
-        <a href="#" title="Close" class="modal-close">Fechar</a>
+        <a href="#" title="Fechar" class="modal-close">[ X ]</a>
         <div id="bandeiras-container"></div>
       </div>
     `;
     document.body.appendChild(modal);
 
     const containerBandeiras = modal.querySelector("#bandeiras-container");
-    animacaoBandeiras(index, containerBandeiras);
+    carregarBandeirasNoModal(index, containerBandeiras);
   });
 });
 
-async function animacaoBandeiras(index, containerBandeiras) {
+async function carregarBandeirasNoModal(index, containerBandeiras) {
   const grupos = await ordemDeApresentacao;
-
   const grupo = grupos[index];
 
   for (let i = 0; i < grupo.length; i++) {
     const pais = grupo[i];
 
-    console.log(`País ${i + 1}:`, pais);
-
     const bandeirasAnimadas = Object.values(paisesJson).filter((nomeDoPais) =>
       pais.includes(nomeDoPais.pais)
     );
 
-    // grupoContainer.classList.add("grupo-bandeiras");
-    // grupoContainer.style.top = `${i  * 100}px`; // Ajuste conforme necessário
-
     const img = document.createElement("img");
-    img.src = bandeirasAnimadas[0].img;
 
+    img.src = bandeirasAnimadas[0].img;
+    img.alt = bandeirasAnimadas[0].pais;
+    img.title = bandeirasAnimadas[0].pais;
     img.classList.add("bandeira");
-    img.style.animationDelay = `${i * 0.5}s`; // Ajuste o delay conforme necessário
-    containerBandeiras.appendChild(img);
+    img.style.animation = `bandeira-animacao 1s ease-in-out ${i * 0.15}s backwards`;
 
     containerBandeiras.appendChild(img);
   }
+
 }
