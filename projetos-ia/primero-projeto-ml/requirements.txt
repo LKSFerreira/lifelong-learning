@@ -1,0 +1,4 @@
+pandas # Lib para manipulação de dados
+mtplotlib # Lib para plotar gráficos
+scikit-learn # Lib para machine learning
+streamlit # Lib para criar web apps
