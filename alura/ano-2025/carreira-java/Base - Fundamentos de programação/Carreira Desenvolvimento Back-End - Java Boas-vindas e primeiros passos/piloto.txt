@@ -1,0 +1,9 @@
+Seja muito bem vindo à Carreira Desenvolvimento Back-End Java da Alura.
+
+Sabemos que iniciar uma nova etapa profissional ou buscar o próximo nível é uma decisão importante, e estamos felizes em fazer parte desta jornada com você.
+
+Essa carreira na Alura é mais do que uma trilha de cursos. É um ecossistema de aprendizado contínuo, pensado para acompanhar você ao longo de toda a sua trajetória. Seja para conquistar sua primeira vaga, se aprofundar para alcançar o próximo nível ou se especializar , nosso objetivo é oferecer o conteúdo e as ferramentas que você precisa em cada fase.
+
+Aqui, o aprendizado é uma imersão em desafios reais. Em cada etapa, você encontrará não apenas o conteúdo teórico, mas um forte estímulo à prática, com projetos e cenários que simulam o dia a dia do mercado de trabalho. Nossa meta é que, ao final de cada fase, você não apenas domine a teoria, mas se sinta totalmente confiante para aplicar seus conhecimentos e resolver problemas complexos.
+
+Para começar essa jornada, o primeiro passo é conhecer bem suas ferramentas e o ambiente de aprendizado que te cercará. Vamos fazer um rápido tour para que você se sinta à vontade para explorar tudo o que preparamos. Bora?
