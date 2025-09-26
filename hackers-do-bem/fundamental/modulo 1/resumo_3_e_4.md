@@ -1,0 +1,6 @@
+# 🧑‍💻Atores, Ameaças e Engenharia Social em Segurança Cibernética
+
+Os textos fornecem um panorama detalhado sobre **segurança cibernética**, abrangendo duas aulas focadas em diferentes aspectos de ameaças digitais. A primeira aula examina os diversos **atores de ameaças**, como *black hat* e *white hat hackers*, diferenciando suas motivações e atividades, além de conceituar a **superfície de ataque** e os **vetores de ataque** utilizados. A mesma aula também explica o papel da **Inteligência de Ameaças** e como a **Inteligência Artificial** é aplicada na detecção e resposta a incidentes de segurança. A segunda aula concentra-se integralmente na **Engenharia Social**, definindo seu conceito, detalhando seus princípios fundamentais (como autoridade, escassez e urgência) e explorando técnicas específicas, incluindo **phishing** (com suas variantes *spear phishing* e *whaling*), *vishing*, e **campanhas de influência** para manipulação.
+
+## Aula 3: Atores de Ameaças e Inteligência de Ameaças
+[Atores de Ameaças e Inteligência de Ameaças](https://youtu.be/oo91ktm2sIQ)
