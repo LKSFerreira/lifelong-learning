@@ -5,3 +5,5 @@ O material fornecido é dividido em duas aulas que oferecem uma **introdução a
 ## Video aula 1 e 2 - Fundamentos da Segurança da Informação
 [![Fundamentos da Segurança da Informação](https://i9.ytimg.com/vi_webp/mKmgRtU8ylE/mqdefault.webp?v=68d56654&sqp=CIi-kccG&rs=AOn4CLB2P0texJuPWP1v5sVcyRnwphEqfg)](https://youtu.be/mKmgRtU8ylE)
 
+## Audio aula 1 e 2 - Fundamentos da Segurança da Informação
+[![Fundamentos da Segurança da Informação](https://i9.ytimg.com/vi_webp/mKmgRtU8ylE/mqdefault.webp?v=68d56654&sqp=CIi-kccG&rs=AOn4CLB2P0texJuPWP1v5sVcyRnwphEqfg)](https://open.spotify.com/show/7DtZgXfxxHWIiaytd9NVee?si=brpy4UAAQFeLLDGWFjJe-g)
