@@ -1,0 +1,6 @@
+# 🦠 Malware: Tipos, Análise e Prevenção
+
+Os materiais fornecem uma visão geral abrangente sobre **malware** e segurança cibernética, divididos em duas aulas principais. A primeira aula, **"Tipos de malware"**, classifica o software malicioso com base em seu **vetor de propagação** (como vírus, worms e trojans), seu **propósito** (incluindo spyware e keyloggers) e seu **payload** ou carga útil (como rootkits, ransomware e bombas lógicas). A segunda aula, **"Análise de indicadores e prevenção de malware"**, foca em como **detectar** e **mitigar** essas ameaças, explicando os **Indicadores de Comprometimento (IoCs)** e as técnicas de **análise de processos**. O conjunto enfatiza a importância da **conscientização do usuário**, da **atualização de software** e do uso de ferramentas como **sandboxes** e **Wireshark** para manter sistemas seguros e resilientes.
+
+# Vídeo aula 1 e 2 - Malware: Tipos, Análise e Prevenção
+[![Video aula 1 e 2 - Malware: Tipos, Análise e Prevenção](https://i9.ytimg.com/vi_webp/ldTAQb5TEeg/sddefault.webp?v=68e45e1b&sqp=CNy7kccG&rs=AOn4CLCqmIYUNYH5z4VGIbvkhGEarSCPpQ)](https://youtu.be/ldTAQb5TEeg)
