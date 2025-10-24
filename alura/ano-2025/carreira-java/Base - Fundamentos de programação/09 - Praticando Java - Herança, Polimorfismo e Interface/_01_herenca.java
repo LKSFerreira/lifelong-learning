@@ -1,3 +1,54 @@
+class Funcionario {
+    private final String nome;
+    private double salario;
+
+    public Funcionario(String nome, double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void reajustaSalario(double percentual) {
+        this.salario += this.salario * percentual / 100;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{nome='" + nome + "', salario=" + salario + "}";
+    }
+}
+
+class Desenvolvedor extends Funcionario {
+
+    private String stack;
+
+    public Desenvolvedor(String nome, double salario, String stack) {
+        super(nome, salario);
+        this.stack = stack;
+    }
+}
+
+class Gerente extends Funcionario {
+
+    private double bonus;
+
+    public Gerente(String nome, double salario) {
+        super(nome, salario);
+    }
+
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+}
+
 public class _01_herenca {
     public static void main(String[] args) {
 
@@ -13,62 +64,8 @@ public class _01_herenca {
         System.out.println(dev.toString());
         dev.reajustaSalario(10);
         System.out.println("Após reajuste:");
-        System.out.println(dev.toString()); 
-
-
-    }
-
-    public static class Desenvolvedor extends Funcionario {
-
-        private String stack;
-
-        public Desenvolvedor(String nome, double salario, String stack) {
-            super(nome, salario);
-            this.stack = stack;
-        }        
-    }
-
-    public static class Gerente extends Funcionario {
-
-        private double bonus;
-
-        public Gerente(String nome, double salario) {
-            super(nome, salario);
-        }
-
-        public double getBonus() {
-            return bonus;
-        }
-
-        public void setBonus(double bonus) {
-            this.bonus = bonus;
-        }
+        System.out.println(dev.toString());
 
     }
 
-    public static class Funcionario {
-        private String nome;
-        private double salario;
-
-        public Funcionario(String nome, double salario) {
-            this.nome = nome;
-            this.salario = salario;
-        }
-
-        public String getNome() {
-            return nome;
-        }
-
-        public void reajustaSalario(double percentual) {
-            this.salario += this.salario * percentual / 100;
-        }
-
-        @Override
-        public String toString() {
-            return "Funcionario{" +
-                    "nome='" + nome + '\'' +
-                    ", salario=" + salario +
-                    '}';
-        }
-    }
 }

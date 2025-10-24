@@ -3,6 +3,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+// Define a classe Item
+class Item {
+    String nome;
+    double preco;
+    int quantidade;
+
+    public Item(String nome, double preco, int quantidade) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    /**
+     * Retorna o valor total do item (preço * quantidade).
+     * @return O valor total do item.
+     */
+    public double getValorTotalItem() {
+        return this.preco * this.quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", quantidade=" + quantidade +
+                '}' ;
+    }
+}
+
 public class _10_carrinho_de_compras {
 
     public static void main(String[] args) {
@@ -32,33 +62,4 @@ public class _10_carrinho_de_compras {
         carrinho.forEach(System.out::println);
     }
 
-    // Define a classe estática Item
-    public static class Item {
-        String nome;
-        double preco;
-        int quantidade;
-
-        public Item(String nome, double preco, int quantidade) {
-            this.nome = nome;
-            this.preco = preco;
-            this.quantidade = quantidade;
-        }
-        
-        /**
-         * Retorna o valor total do item (preço * quantidade).
-         * @return O valor total do item.
-         */
-        public double getValorTotalItem() {
-            return this.preco * this.quantidade;
-        }
-
-        @Override
-        public String toString() {
-            return "Item{" +
-                    "nome='" + nome + '\'' +
-                    ", preco=" + preco +
-                    ", quantidade=" + quantidade +
-                    '}';
-        }
-    }
 }

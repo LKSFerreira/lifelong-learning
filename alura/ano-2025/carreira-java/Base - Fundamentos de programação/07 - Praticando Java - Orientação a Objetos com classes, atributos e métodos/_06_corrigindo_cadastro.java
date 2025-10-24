@@ -1,3 +1,34 @@
+// Define a classe Colaborador
+class Colaborador {
+    String nome;
+    String cargo;
+    int nivelAcesso;
+
+    // Construtor para inicializar os atributos
+    public Colaborador(String nome, String cargo, int nivelAcesso) {
+        this.nome = nome;
+        this.cargo = cargo;
+        this.nivelAcesso = nivelAcesso;
+    }
+
+    /**
+     * Permite alterar o cargo e o nível de acesso do colaborador.
+     */
+    public void alterarCargoNivel(String novoCargo, int novoNivel) {
+        this.cargo = novoCargo;
+        this.nivelAcesso = novoNivel;
+    }
+
+    /**
+     * Exibe no console as informações do colaborador.
+     */
+    public void exibirInformacoes() {
+        System.out.println("Nome: " + this.nome);
+        System.out.println("Cargo: " + this.cargo);
+        System.out.println("Nível de acesso: " + this.nivelAcesso);
+    }
+}
+
 public class _06_corrigindo_cadastro {
 
     public static void main(String[] args) {
@@ -17,34 +48,4 @@ public class _06_corrigindo_cadastro {
         colaborador.exibirInformacoes();
     }
 
-    // Define a classe estática Colaborador
-    public static class Colaborador {
-        String nome;
-        String cargo;
-        int nivelAcesso;
-
-        // Construtor para inicializar os atributos
-        public Colaborador(String nome, String cargo, int nivelAcesso) {
-            this.nome = nome;
-            this.cargo = cargo;
-            this.nivelAcesso = nivelAcesso;
-        }
-
-        /**
-         * Permite alterar o cargo e o nível de acesso do colaborador.
-         */
-        public void alterarCargoNivel(String novoCargo, int novoNivel) {
-            this.cargo = novoCargo;
-            this.nivelAcesso = novoNivel;
-        }
-
-        /**
-         * Exibe no console as informações do colaborador.
-         */
-        public void exibirInformacoes() {
-            System.out.println("Nome: " + this.nome);
-            System.out.println("Cargo: " + this.cargo);
-            System.out.println("Nível de acesso: " + this.nivelAcesso);
-        }
-    }
 }

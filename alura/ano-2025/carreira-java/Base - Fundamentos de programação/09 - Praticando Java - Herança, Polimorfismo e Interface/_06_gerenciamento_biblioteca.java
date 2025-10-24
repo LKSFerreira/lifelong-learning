@@ -11,71 +11,70 @@ public class _06_gerenciamento_biblioteca {
         ebook.exibirInfo();
 
     }
+}
 
-    public static class Midia {
-        protected String titulo;
-        private int anoPublicacao;
+class Midia {
+    protected String titulo;
+    private int anoPublicacao;
 
-        public Midia(String titulo, int anoPublicacao) {
-            this.titulo = titulo;
-            this.anoPublicacao = anoPublicacao;
-        }
-
-        private String codigoBiblioteca() {
-            return "LIB-" + titulo.substring(0, 3) + anoPublicacao;
-        }
-
-        public void exibirInfo() {
-            System.out.print(codigoBiblioteca());
-        }
+    public Midia(String titulo, int anoPublicacao) {
+        this.titulo = titulo;
+        this.anoPublicacao = anoPublicacao;
     }
 
-    public static class Livro extends Midia {
-        private String autor;
-
-        public Livro(String titulo, int anoPublicacao, String autor) {
-            super(titulo, anoPublicacao);
-            this.autor = autor;
-        }
-
-        @Override
-        public void exibirInfo() {
-            super.exibirInfo();
-            System.out.println(" | Livro: " + titulo + ", Autor: " + autor);
-        }
-
+    private String codigoBiblioteca() {
+        return "LIB-" + titulo.substring(0, 3) + anoPublicacao;
     }
 
-    public static class Revista extends Midia {
-        private String edicao;
+    public void exibirInfo() {
+        System.out.print(codigoBiblioteca());
+    }
+}
 
-        public Revista(String titulo, int anoPublicacao, String edicao) {
-            super(titulo, anoPublicacao);
-            this.edicao = edicao;
-        }
+class Livro extends Midia {
+    private String autor;
 
-        @Override
-        public void exibirInfo() {
-            super.exibirInfo();
-            System.out.println(" | Revista: " + titulo + ", Edição: " + edicao);
-        }
-
+    public Livro(String titulo, int anoPublicacao, String autor) {
+        super(titulo, anoPublicacao);
+        this.autor = autor;
     }
 
-    public static class ebook extends Midia {
-        private String formatoArquivo;
+    @Override
+    public void exibirInfo() {
+        super.exibirInfo();
+        System.out.println(" | Livro: " + titulo + ", Autor: " + autor);
+    }
 
-        public ebook(String titulo, int anoPublicacao, String formatoArquivo) {
-            super(titulo, anoPublicacao);
-            this.formatoArquivo = formatoArquivo;
-        }
+}
 
-        @Override
-        public void exibirInfo() {
-            super.exibirInfo();
-            System.out.println(" | eBook: " + titulo + ", Formato: " + formatoArquivo);
-        }
+class Revista extends Midia {
+    private String edicao;
 
+    public Revista(String titulo, int anoPublicacao, String edicao) {
+        super(titulo, anoPublicacao);
+        this.edicao = edicao;
+    }
+
+    @Override
+    public void exibirInfo() {
+        super.exibirInfo();
+        System.out.println(" | Revista: " + titulo + ", Edição: " + edicao);
+    }
+
+}
+
+class ebook extends Midia {
+    private String formatoArquivo;
+
+    public ebook(String titulo, int anoPublicacao, String formatoArquivo) {
+        super(titulo, anoPublicacao);
+        this.formatoArquivo = formatoArquivo;
+    }
+
+    @Override
+    public void exibirInfo() {
+        super.exibirInfo();
+        System.out.println(" | eBook: " + titulo + ", Formato: " + formatoArquivo);
     }
 
 }

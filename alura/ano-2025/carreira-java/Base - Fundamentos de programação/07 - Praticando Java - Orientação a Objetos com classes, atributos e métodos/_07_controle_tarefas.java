@@ -1,6 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
+// Define a classe Tarefa
+class Tarefa {
+    String descricao;
+    boolean concluida;
+
+    /**
+     * Mostra a descrição da tarefa e seu status (Pendente ou Concluída).
+     */
+    public void mostrarTarefa() {
+        // Usa um operador ternário para definir a string de status
+        String status = this.concluida ? "Concluída" : "Pendente";
+        System.out.println("Tarefa: " + this.descricao + " - Status: " + status);
+    }
+}
+
 public class _07_controle_tarefas {
 
     public static void main(String[] args) {
@@ -22,7 +37,7 @@ public class _07_controle_tarefas {
         listaDeTarefas.add(t2);
 
         // Itera sobre a lista e exibe cada tarefa
-        
+
         // for (Tarefa tarefa : listaDeTarefas) {
         //     tarefa.mostrarTarefa();
         // }
@@ -30,18 +45,4 @@ public class _07_controle_tarefas {
         listaDeTarefas.forEach(Tarefa::mostrarTarefa);
     }
 
-    // Define a classe estática Tarefa
-    public static class Tarefa {
-        String descricao;
-        boolean concluida;
-
-        /**
-         * Mostra a descrição da tarefa e seu status (Pendente ou Concluída).
-         */
-        public void mostrarTarefa() {
-            // Usa um operador ternário para definir a string de status
-            String status = this.concluida ? "Concluída" : "Pendente";
-            System.out.println("Tarefa: " + this.descricao + " - Status: " + status);
-        }
-    }
 }

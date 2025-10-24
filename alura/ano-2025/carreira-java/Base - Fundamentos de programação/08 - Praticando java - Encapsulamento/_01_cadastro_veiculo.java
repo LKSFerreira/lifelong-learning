@@ -1,5 +1,23 @@
+class Veiculo {
+    private String modelo;
+    private String placa;
+    private int ano;
+
+    public Veiculo(String modelo, String placa, int ano) {
+        this.modelo = modelo;
+        this.placa = placa;
+        this.ano = ano;
+    }
+
+    @Override
+    public String toString() {
+        return "Veiculo [modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + "]";
+    }
+
+}
+
 public class _01_cadastro_veiculo {
-    
+
     public static void main(String[] args) {
 
         Veiculo veiculo1 = new Veiculo("Toyota Corolla", "ABC-1234", 2020);
@@ -10,21 +28,4 @@ public class _01_cadastro_veiculo {
 
     }
 
-    public static class Veiculo {
-        private String modelo;
-        private String placa;
-        private int ano;
-
-        public Veiculo(String modelo, String placa, int ano) {
-            this.modelo = modelo;
-            this.placa = placa;
-            this.ano = ano;
-        }
-
-        @Override
-        public String toString() {
-            return "Veiculo [modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + "]";
-        }
-
-    }
 }
