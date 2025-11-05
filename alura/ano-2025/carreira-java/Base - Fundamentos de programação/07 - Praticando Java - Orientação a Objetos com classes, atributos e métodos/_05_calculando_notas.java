@@ -1,4 +1,20 @@
-class Aluno {
+public class _05_calculando_notas {
+    public static void main(String[] args) {
+        Aluno aluno = new Aluno();
+        aluno.nome = "João";
+        aluno.nota1 = 8.5;
+        aluno.nota2 = 6.0;
+        aluno.getAluno();
+
+        Aluno aluno2 = new Aluno();
+        aluno2.nome = "Maria";
+        aluno2.nota1 = 5.0;
+        aluno2.nota2 = 4.5;
+        aluno2.getAluno();
+
+    }
+
+    public static class Aluno {
     String nome;
     double nota1;
     double nota2;
@@ -21,20 +37,4 @@ class Aluno {
     }
 
 }
-
-public class _05_calculando_notas {
-    public static void main(String[] args) {
-        Aluno aluno = new Aluno();
-        aluno.nome = "João";
-        aluno.nota1 = 8.5;
-        aluno.nota2 = 6.0;
-        aluno.getAluno();
-
-        Aluno aluno2 = new Aluno();
-        aluno2.nome = "Maria";
-        aluno2.nota1 = 5.0;
-        aluno2.nota2 = 4.5;
-        aluno2.getAluno();
-
-    }
 }
