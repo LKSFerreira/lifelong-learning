@@ -49,7 +49,7 @@ class Gerente extends Funcionario {
 
 }
 
-public class _01_herenca {
+public class _01_heranca {
     public static void main(String[] args) {
 
         Gerente gerente = new Gerente("João", 5000);
