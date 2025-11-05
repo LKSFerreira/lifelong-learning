@@ -1,0 +1,17 @@
+{
+  "name": "lksferreira",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "- 👋 Hi, I’m @LKSFerreira - 👀 I'm interested in 🎮 - 🔭 - 🔬 - 📚 - 🤖 - 👨‍💻 - 💞️ I’m looking to collaborate on enthusiastic - 📫 How to reach me:",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Lucas Ferreira",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
