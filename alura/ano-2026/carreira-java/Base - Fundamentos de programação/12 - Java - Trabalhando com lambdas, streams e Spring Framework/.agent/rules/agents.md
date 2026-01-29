@@ -49,7 +49,7 @@ public class Main {
 
 ## 4. Linguagem em Estudo
 
-> LINGUAGEM_PROJETO: <linguagem>
+> LINGUAGEM_PROJETO: java
 
 Consulte as regras específicas em: `.agent/rules/<linguagem>.md`
 
