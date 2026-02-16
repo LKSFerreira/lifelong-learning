@@ -1,0 +1,24 @@
+#FROM mcr.microsoft.com/devcontainers/base:ubuntu
+FROM mcr.microsoft.com/devcontainers/java:21
+
+# Base tooling
+RUN apt-get update
+# RUN apt-get install -y --no-install-recommends ca-certificates curl gnupg software-properties-common
+
+# Java 21 + socat
+# RUN apt-get install -y --no-install-recommends openjdk-21-jdk socat
+
+# Node.js 24 (NodeSource)
+# RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
+# RUN apt-get install -y --no-install-recommends nodejs
+# RUN npm install -g npm
+
+# Python 3.13 (deadsnakes)
+# RUN add-apt-repository -y ppa:deadsnakes/ppa
+# RUN apt-get install -y --no-install-recommends python3.13 python3.13-venv python3.13-dev
+
+# Cleanup
+RUN rm -rf /var/lib/apt/lists/*
+
+# Opcional: fazer "python" apontar para 3.13
+# RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.13 13
