@@ -25,9 +25,10 @@ services:
     volumes:
       - ../:/app
       - maven-cache:/home/vscode/.m2
+      - /app/target
     working_dir: /app
-    # command: bash -lc "bash /app/.devcontainer/fix-devcontainer.sh; exec sleep infinity"
-    command: bash -lc "exec sleep infinity"
+    command: bash -lc "bash /app/.devcontainer/fix-devcontainer.sh; exec sleep infinity"
+    # command: bash -lc "exec sleep infinity"
     ports:
       - "8080:8080"
     stdin_open: true
