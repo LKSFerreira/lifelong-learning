@@ -4,6 +4,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import app.cryptostatus.principal.CryptoStatusApp;
+
 @SpringBootApplication
 public class CryptostatusApplication implements CommandLineRunner {
 
@@ -13,7 +15,8 @@ public class CryptostatusApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Ola mundo");
+		CryptoStatusApp app = new CryptoStatusApp();
+		app.run();
 	}
 
 }
