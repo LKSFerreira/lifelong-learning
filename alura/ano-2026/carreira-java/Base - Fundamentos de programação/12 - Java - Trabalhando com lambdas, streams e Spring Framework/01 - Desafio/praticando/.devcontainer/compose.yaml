@@ -1,0 +1,33 @@
+# =============================================================================
+# Docker Compose - Java com Spring Boot (ScreenMatch)
+# =============================================================================
+# Uso: docker compose up
+# App: http://localhost:8080
+# =============================================================================
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    user: vscode
+    volumes:
+      - ../:/app
+      - maven-cache:/home/vscode/.m2
+      - /app/target
+    working_dir: /app
+    command: bash -lc "bash /app/.devcontainer/fix-devcontainer.sh; exec sleep infinity"
+    # command: bash -lc "exec sleep infinity"
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+    environment:
+      - ENV_DEVELOPMENT=true
+      - SPRING_PROFILES_ACTIVE=dev
+      - JAVA_TOOL_OPTIONS=-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0
+    # depends_on:
+    #   - database
+
+volumes:
+  maven-cache:
