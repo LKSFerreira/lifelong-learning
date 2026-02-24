@@ -27,6 +27,31 @@ Repositório de estudos do curso da Alura sobre recursos modernos do Java e intr
 | 04   | Explorando mais os fluxos e gerando estatísticas |
 | 05   | Consolidando conhecimentos (Desafio final)       |
 
+## ✅ Evolução por Módulo
+
+### Módulo 1: Um novo projeto utilizando o Spring Framework
+
+Neste módulo, mergulhamos na base do ecossistema Spring e Java moderno:
+
+- **Estrutura de um Projeto Spring**: Compreensão de pacotes, classes de configuração e o ciclo de vida do método `run`.
+- **Inferência de tipos**: Aplicação prática do `var` para reduzir a verbosidade do código.
+- **Consumo de API**: Implementação de clientes para requisições HTTP e tratamento de respostas JSON.
+- **Modularização**: Organização do código em camadas para facilitar a manutenção.
+- **Serialização e Desserialização**: Uso do **Jackson** para mapear JSON para classes Java (POJOs/Records).
+- **Generics**: Implementação de interfaces e métodos genéricos para conversão de dados flexível.
+- **Maven**: Gerenciamento de dependências e configuração do `pom.xml`.
+
+### Módulo 2: Modelando os dados da aplicação
+
+Evoluímos o projeto para uma aplicação mais robusta e interativa:
+
+- **Anotações Jackson**: Uso avançado de `@JsonAlias` para mapear campos da API com nomes diferentes dos Java e `@JsonIgnoreProperties` para limpeza de dados.
+- **Interação com Usuário**: Desenvolvimento de menus via console para capturar entradas de pesquisa.
+- **Consultas Detalhadas**: Refinamento da lógica para consultar temporadas e episódios específicos.
+- **Manipulação de Strings**: Formatação dinâmica de URLs para consultas parametrizadas na API.
+- **Introdução aos Lambdas**: Primeiras implementações de funções anônimas para simplificar comportamentos.
+- **Desenvolvimento Colaborativo**: Reflexão sobre padrões de projeto e versionamento com Git.
+
 ## 🔗 Links
 
 - [Curso na Alura](https://www.alura.com.br/) _(acesso requer assinatura)_

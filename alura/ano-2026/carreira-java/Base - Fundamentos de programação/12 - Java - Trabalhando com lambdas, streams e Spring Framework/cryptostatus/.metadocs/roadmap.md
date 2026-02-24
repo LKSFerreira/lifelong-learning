@@ -8,35 +8,39 @@
 
 ## Aula 01: Um novo projeto utilizando o Spring Framework
 
-- [ ] Apresentação do curso
-- [ ] Criar projeto com Spring Framework
-- [ ] Entender Maven e Gradle
-- [ ] Conhecer a interface `CommandLineRunner`
-- [ ] Consumir API externa
-- [ ] Desserializar dados JSON
-- [ ] Configurar dependência do Jackson no `pom.xml`
-- [ ] Conhecer `@JsonAlias` e `@JsonProperty`
-- [ ] Modelar dados da série
-- [ ] Entender Generics em Java
-- [ ] Trabalhar com tipos genéricos
-- [ ] Desafio: hora da prática
+- [x] Apresentação do curso
+- [x] Criar projeto com Spring Framework
+- [x] Entender Maven e Gradle
+- [x] Conhecer a interface `CommandLineRunner`
+- [x] Consumir API externa
+- [x] Desserializar dados JSON
+- [x] Configurar dependência do Jackson no `pom.xml`
+- [x] Conhecer `@JsonAlias` e `@JsonProperty`
+- [x] Modelar dados da série
+- [x] Entender Generics em Java
+- [x] Trabalhar com tipos genéricos
+- [x] Desafio: hora da prática
 
 ---
 
 ## Aula 02: Modelando os dados da aplicação
 
-- [ ] Modelar classe de episódios
-- [ ] Modelar classe de temporadas
-- [ ] Iterar para buscar temporadas de uma série
-- [ ] Revisar conceitos de coleções
-- [ ] Buscar somente episódios pares
-- [ ] Criar menu de interação com o usuário
-- [ ] Trabalhar com constantes
-- [ ] Buscar dados completos da série
-- [ ] Manipular coleção de dados
-- [ ] Entender funções Lambda
-- [ ] Ignorar propriedades com Jackson
+- [ ] Projeto da aula anterior
+- [ ] Modelando episódios
+- [ ] Para saber mais: Git e GitHub
+- [ ] Modelando temporadas
+- [ ] Iterando para buscar temporadas de uma série
+- [ ] Para saber mais: coleções
+- [ ] Buscando somente episódio pares
+- [ ] Criando o menu de interação com o usuário
+- [ ] Para saber mais: constantes
+- [ ] Buscando dados completos da série
+- [ ] Trabalhando na coleção de dados
+- [ ] Para saber mais: funções Lambda
+- [ ] Ignorando propriedades no Java
+- [ ] Faça como eu fiz: aplicando interação com o usuário
 - [ ] Desafio: hora da prática
+- [ ] O que aprendemos?
 
 ---
 
@@ -85,8 +89,8 @@
 
 | Aula    | Tema                                   | Status       |
 | ------- | -------------------------------------- | ------------ |
-| Aula 01 | Spring Framework e consumo de API      | Não iniciado |
-| Aula 02 | Modelagem de dados                     | Não iniciado |
+| Aula 01 | Spring Framework e consumo de API      | Concluído    |
+| Aula 02 | Modelagem de dados                     | Em andamento |
 | Aula 03 | Streams e manipulação de coleções      | Não iniciado |
 | Aula 04 | Estatísticas e recursos avançados      | Não iniciado |
 | Aula 05 | Desafio final - Avaliações de veículos | Não iniciado |
