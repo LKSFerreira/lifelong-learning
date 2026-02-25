@@ -54,14 +54,14 @@ Evoluímos o projeto para uma aplicação mais robusta e interativa:
 
 ### Módulo 3: Manipulando com fluxos as coleções de dados
 
-Aprofundamos no poder da **API de Streams** para manipulação declarativa de dados:
+Neste módulo, mergulhamos no poder do Java funcional e na robustez da manipulação de dados:
 
-- **Stream Pipeline**: Compreensão do fluxo de dados (Fonte -> Operações Intermediárias -> Operação Final).
-- **Operações Intermediárias**: Uso de `filter`, `map`, `sorted`, `limit`, `distinct` e `flatMap` para transformar e filtrar coleções.
-- **Lazy Evaluation**: Entendimento de que as streams são processadas de forma sob demanda para otimização de performance.
-- **Operações Finais**: Aplicação de `collect(Collectors.toList())`, `forEach`, `count` e outras para encerrar o fluxo.
-- **Imutabilidade**: Prática de manipulação de coleções sem alterar a fonte original dos dados.
-- **Métodos de Referência (Method Reference)**: Uso de `System.out::println` e construtores para tornar o código mais limpo.
+- **Introdução às Funções Lambda**: Escrita concisa e eficiente de comportamentos através de expressões lambda.
+- **API de Streams**: Uso essencial de fluxos para realizar operações encadeadas (Pipeline) em coleções.
+- **Filtragem e Transformação**: Aplicação prática de `filter`, `map`, `sorted` e `collect` para processar dados de forma declarativa.
+- **Manipulação de Datas**: Uso do `LocalDate` e conversão de Strings para formatos temporais.
+- **Tratamento de Exceções**: Gestão de erros específicos como `NumberFormatException` e `DateTimeParseException` durante a conversão de dados.
+- **Imutabilidade e Performance**: Compreensão de como as streams otimizam o processamento de grandes coleções sem alterar a fonte original.
 
 ## 🔗 Links
 
