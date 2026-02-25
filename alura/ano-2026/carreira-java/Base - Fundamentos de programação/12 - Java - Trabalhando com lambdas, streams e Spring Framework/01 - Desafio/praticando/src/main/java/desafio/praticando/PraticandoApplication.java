@@ -5,7 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import desafio.praticando.models.DesafioStream;
-import desafio.praticando.models.Lista;
 
 @SpringBootApplication
 public class PraticandoApplication implements CommandLineRunner {
