@@ -4,8 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import desafio.praticando.interfaces.ICalculadora;
-import desafio.praticando.models.Calculadora;
+import desafio.praticando.models.DesafioStream;
 import desafio.praticando.models.Lista;
 
 @SpringBootApplication
@@ -28,11 +27,13 @@ public class PraticandoApplication implements CommandLineRunner {
 
 		// Calculadora calculadora = new Calculadora();
 		// var resultadoMultiplicacao = calculadora.multiplicacao(3, 9);
-		// System.out.println("\nResultado da multiplicação: " + resultadoMultiplicacao + "\n");
+		// System.out.println("\nResultado da multiplicação: " + resultadoMultiplicacao
+		// + "\n");
 
 		// ICalculadora calculdoraLambda = (x, y) -> x * y;
 		// var resultadoMultiplicacaoLambda = calculdoraLambda.multiplicacao(3, 9);
-		// System.out.println("\nResultado da multiplicação com lambda: " + resultadoMultiplicacaoLambda + "\n");
+		// System.out.println("\nResultado da multiplicação com lambda: " +
+		// resultadoMultiplicacaoLambda + "\n");
 
 		// calculadora.isPrimo(2);
 		// calculadora.isPrimo(5);
@@ -40,7 +41,8 @@ public class PraticandoApplication implements CommandLineRunner {
 		// System.out.println();
 
 		System.out.println();
-		Lista.executar();
+		DesafioStream.executar();
+		// Lista.executar();
 		System.out.println();
 
 	}
