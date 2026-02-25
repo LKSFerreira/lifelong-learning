@@ -52,6 +52,17 @@ Evoluímos o projeto para uma aplicação mais robusta e interativa:
 - **Introdução aos Lambdas**: Primeiras implementações de funções anônimas para simplificar comportamentos.
 - **Desenvolvimento Colaborativo**: Reflexão sobre padrões de projeto e versionamento com Git.
 
+### Módulo 3: Manipulando com fluxos as coleções de dados
+
+Aprofundamos no poder da **API de Streams** para manipulação declarativa de dados:
+
+- **Stream Pipeline**: Compreensão do fluxo de dados (Fonte -> Operações Intermediárias -> Operação Final).
+- **Operações Intermediárias**: Uso de `filter`, `map`, `sorted`, `limit`, `distinct` e `flatMap` para transformar e filtrar coleções.
+- **Lazy Evaluation**: Entendimento de que as streams são processadas de forma sob demanda para otimização de performance.
+- **Operações Finais**: Aplicação de `collect(Collectors.toList())`, `forEach`, `count` e outras para encerrar o fluxo.
+- **Imutabilidade**: Prática de manipulação de coleções sem alterar a fonte original dos dados.
+- **Métodos de Referência (Method Reference)**: Uso de `System.out::println` e construtores para tornar o código mais limpo.
+
 ## 🔗 Links
 
 - [Curso na Alura](https://www.alura.com.br/) _(acesso requer assinatura)_
