@@ -47,4 +47,52 @@ A lambda `(x, y) -> x * y` é uma implementação "cega". Se a interface tiver d
 ### Como resolver se precisar de mais métodos?
 
 1. **Crie interfaces separadas**: Cada uma com sua responsabilidade (ex: `ICalculadora` para cálculos e `IVerificador` para `isPrimo`).
-2. **Use métodos `default` ou `static`**: Estes não contam como "abstratos" e podem coexistir com o método da lambda.
+
+## 3. Visualizando o Pipeline de Streams 🌊
+
+Estudar Streams de forma visual facilita entender que os dados **fluem** através de um cano (pipeline). Imagine uma linha de produção:
+
+### O Modelo Mental do Pipeline
+
+```mermaid
+graph LR
+    A[FONTE de Dados] --> B{Operação<br/>Intermediária}
+    B --> C{Operação<br/>Intermediária}
+    C --> D((Operação<br/>Final))
+
+    subgraph "Stream Pipeline"
+    B
+    C
+    end
+
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#7f7,stroke:#333,stroke-width:2px
+```
+
+### 🧠 Como o Java "Pensa":
+
+1.  **FONTE**: Onde tudo começa (ex: `List.stream()`).
+2.  **OPERAÇÕES INTERMEDIÁRIAS**: Transformam o fluxo, mas **não executam nada** ainda (são preguiçosas/lazy). Elas sempre retornam um novo Stream.
+    - `filter()` -> Escolhe quem passa.
+    - `map()` -> Transforma quem passa.
+    - `sorted()` -> Organiza a fila.
+3.  **OPERAÇÃO FINAL**: O "botão de ligar". Só quando ela é chamada é que os dados realmente começam a passar pelo filtro e pela transformação.
+    - `collect()` -> Guarda o resultado.
+    - `forEach()` -> Executa uma ação (imprimir).
+
+### Desenho do Fluxo de Execução
+
+Imagine a lista `[1, 2, 3, 4]` passando por um filtro de pares e um dobro:
+
+```text
+Entrada: [ 1,  2,  3,  4 ]
+           |   |   |   |
+ filter:  [x] [2] [x] [4]  <-- Só o 2 e 4 passam pelo filtro
+               |       |
+    map:      [4]     [8]  <-- 2 vira 4, 4 vira 8
+               |       |
+collect:      [ 4, 8 ]     <-- Resultado Final
+```
+
+> [!TIP]
+> **Performance**: Como as Streams são preguiçosas, o Java pode otimizar o fluxo. Se você usar um `.limit(5)`, ele para de processar a lista assim que encontrar os primeiros 5, mesmo que a lista tenha 1 milhão de itens!
